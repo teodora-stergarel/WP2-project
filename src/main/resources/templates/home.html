@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>SkillSwap</title>
 </head>
@@ -7,6 +7,14 @@
 
 <h1>Welcome to SkillSwap</h1>
 <p>The platform where students exchange lessons using credits.</p>
+
+<p>
+    <a th:href="@{/register}">Register</a>
+</p>
+
+<p>
+    <a th:href="@{/login}">Login</a>
+</p>
 
 </body>
 </html>
