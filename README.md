@@ -84,3 +84,9 @@ The platform includes authentication, user roles, profile management, file uploa
 ---
 
 ## Running with Docker
+
+---
+
+## Figma link:
+
+https://www.figma.com/design/nssNowJkwgwZIAt6zi5XWz/SkillSwap?node-id=15-5&t=QkmSz8G7C6aPDLnn-1
