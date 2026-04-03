@@ -22,14 +22,21 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/", "/home", "/register", "/profile", "/profile/update-bio", "/profile/upload-image", "/uploads/**", "/offers", "/offers/create", "/offers/delete/**", "/offers/request/**", "/css/**", "/js/**", "/images/**").permitAll()
+                        .requestMatchers(
+                                "/", "/home", "/register", "/login",
+                                "/css/**", "/js/**", "/images/**", "/uploads/**"
+                        ).permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
                         .loginPage("/login")
+                        .defaultSuccessUrl("/profile", true)
                         .permitAll()
                 )
-                .logout(Customizer.withDefaults());
+                .logout(logout -> logout
+                        .logoutSuccessUrl("/login?logout")
+                        .permitAll()
+                );
 
         return http.build();
     }
@@ -41,7 +48,8 @@ public class SecurityConfig {
 
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
-        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider(customUserDetailsService);
+        DaoAuthenticationProvider authProvider =
+                new DaoAuthenticationProvider(customUserDetailsService);
         authProvider.setPasswordEncoder(passwordEncoder());
         return authProvider;
     }
