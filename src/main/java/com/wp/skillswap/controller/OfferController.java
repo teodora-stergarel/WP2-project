@@ -6,111 +6,103 @@ import com.wp.skillswap.model.User;
 import com.wp.skillswap.repository.LessonRequestRepository;
 import com.wp.skillswap.repository.OfferRepository;
 import com.wp.skillswap.repository.UserRepository;
+import com.wp.skillswap.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Controller
 public class OfferController {
 
     private final OfferRepository offerRepository;
-    private final UserRepository userRepository;
     private final LessonRequestRepository lessonRequestRepository;
+    private final UserRepository userRepository;
+    private final UserService userService;
 
     public OfferController(OfferRepository offerRepository,
+                           LessonRequestRepository lessonRequestRepository,
                            UserRepository userRepository,
-                           LessonRequestRepository lessonRequestRepository) {
+                           UserService userService) {
         this.offerRepository = offerRepository;
-        this.userRepository = userRepository;
         this.lessonRequestRepository = lessonRequestRepository;
+        this.userRepository = userRepository;
+        this.userService = userService;
     }
 
     @GetMapping("/offers")
-    public String listOffers(Model model) {
+    public String showOffers(Model model) {
         model.addAttribute("offers", offerRepository.findAll());
         return "offers";
     }
 
     @GetMapping("/offers/create")
-    public String showCreateForm(Model model) {
+    public String showCreateOfferPage(Model model) {
         model.addAttribute("offer", new Offer());
         return "create-offer";
     }
 
     @PostMapping("/offers/create")
-    public String createOffer(@ModelAttribute Offer offer) {
-        User user = userRepository.findAll().stream().findFirst().orElse(null);
-
-        if (user == null) {
-            return "redirect:/register";
-        }
+    public String createOffer(@ModelAttribute Offer offer, Principal principal) {
+        User user = userService.getAuthenticatedUser(principal);
 
         offer.setOwner(user);
         offer.setCreatedAt(LocalDateTime.now());
 
         offerRepository.save(offer);
-
         return "redirect:/offers";
     }
 
     @PostMapping("/offers/delete/{id}")
-    public String deleteOffer(@PathVariable Long id) {
-        offerRepository.deleteById(id);
-        return "redirect:/offers";
-    }
-
-    @PostMapping("/offers/request/{id}")
-    public String requestLesson(@PathVariable Long id) {
+    public String deleteOffer(@PathVariable Long id, Principal principal) {
+        User user = userService.getAuthenticatedUser(principal);
         Offer offer = offerRepository.findById(id).orElse(null);
 
         if (offer == null) {
             return "redirect:/offers";
         }
 
-        List<User> users = userRepository.findAll();
-
-        if (users.isEmpty()) {
-            return "redirect:/register";
+        if (!offer.getOwner().getId().equals(user.getId())) {
+            return "redirect:/offers?error=forbidden";
         }
 
+        offerRepository.delete(offer);
+        return "redirect:/offers?deleted";
+    }
+
+    @PostMapping("/offers/request/{id}")
+    public String requestLesson(@PathVariable Long id, Principal principal) {
+        Offer offer = offerRepository.findById(id).orElse(null);
+
+        if (offer == null) {
+            return "redirect:/offers?error=notfound";
+        }
+
+        User requester = userService.getAuthenticatedUser(principal);
         User owner = offer.getOwner();
-        User requester = null;
 
-        for (User u : users) {
-            if (!u.getId().equals(owner.getId())) {
-                requester = u;
-                break;
-            }
-        }
-
-        if (requester == null) {
-            return "redirect:/offers?error=noseconduser";
+        if (requester.getId().equals(owner.getId())) {
+            return "redirect:/offers?error=ownoffer";
         }
 
         if (requester.getCreditsBalance() < offer.getPriceCredits()) {
             return "redirect:/offers?error=notenoughcredits";
         }
 
-        requester.setCreditsBalance(
-                requester.getCreditsBalance() - offer.getPriceCredits()
-        );
-
-        owner.setCreditsBalance(
-                owner.getCreditsBalance() + offer.getPriceCredits()
-        );
+        requester.setCreditsBalance(requester.getCreditsBalance() - offer.getPriceCredits());
+        owner.setCreditsBalance(owner.getCreditsBalance() + offer.getPriceCredits());
 
         userRepository.save(requester);
         userRepository.save(owner);
 
-        LessonRequest request = new LessonRequest();
-        request.setOffer(offer);
-        request.setRequester(requester);
-        request.setCreatedAt(LocalDateTime.now());
+        LessonRequest lessonRequest = new LessonRequest();
+        lessonRequest.setOffer(offer);
+        lessonRequest.setRequester(requester);
+        lessonRequest.setCreatedAt(LocalDateTime.now());
 
-        lessonRequestRepository.save(request);
+        lessonRequestRepository.save(lessonRequest);
 
         return "redirect:/offers?success=requested";
     }
