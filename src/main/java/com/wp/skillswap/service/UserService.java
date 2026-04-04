@@ -6,6 +6,7 @@ import com.wp.skillswap.model.User;
 import com.wp.skillswap.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
 import java.security.Principal;
 
 @Service
@@ -35,6 +36,13 @@ public class UserService {
 
         userRepository.save(user);
     }
+
+    public User getAuthenticatedUser(Principal principal) {
+        if (principal == null) {
+            throw new IllegalArgumentException("No authenticated user found");
+        }
+
+        return userRepository.findByEmail(principal.getName())
+                .orElseThrow(() -> new IllegalArgumentException("Authenticated user not found"));
+    }
 }
-
-
