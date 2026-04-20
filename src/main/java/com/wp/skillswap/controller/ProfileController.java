@@ -29,7 +29,10 @@ public class ProfileController {
     @GetMapping("/profile")
     public String showProfile(Model model, Principal principal) {
         User user = userService.getAuthenticatedUser(principal);
+
         model.addAttribute("user", user);
+        model.addAttribute("isAdmin", user.getRole().name().equals("ADMIN"));
+
         return "profile";
     }
 

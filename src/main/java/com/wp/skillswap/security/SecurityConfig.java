@@ -1,13 +1,18 @@
 package com.wp.skillswap.security;
 
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+
+import java.io.IOException;
 
 @Configuration
 public class SecurityConfig {
@@ -28,11 +33,12 @@ public class SecurityConfig {
                                 "/uploads/**",
                                 "/css/**", "/js/**", "/images/**"
                         ).permitAll()
+                        .requestMatchers("/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
                         .loginPage("/login")
-                        .defaultSuccessUrl("/profile", true)
+                        .successHandler(this::loginSuccessHandler)
                         .permitAll()
                 )
                 .logout(logout -> logout
@@ -41,6 +47,20 @@ public class SecurityConfig {
                 );
 
         return http.build();
+    }
+
+    private void loginSuccessHandler(HttpServletRequest request,
+                                     HttpServletResponse response,
+                                     Authentication authentication) throws IOException, ServletException {
+
+        boolean isAdmin = authentication.getAuthorities().stream()
+                .anyMatch(auth -> auth.getAuthority().equals("ROLE_ADMIN"));
+
+        if (isAdmin) {
+            response.sendRedirect("/admin");
+        } else {
+            response.sendRedirect("/profile");
+        }
     }
 
     @Bean

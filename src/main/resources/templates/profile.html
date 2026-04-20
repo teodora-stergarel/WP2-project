@@ -101,6 +101,23 @@
                         </div>
                     </div>
 
+                    <hr class="my-4">
+
+                    <!-- 🔥 BUTOANE NAVIGARE -->
+                    <div class="d-grid gap-2">
+                        <a th:href="@{/offers}" class="btn btn-outline-primary">View Offers</a>
+                        <a th:href="@{/offers/create}" class="btn btn-outline-success">Create Offer</a>
+
+                        <!-- 🔥 ADMIN DOAR PENTRU ADMIN -->
+                        <a th:href="@{/admin}"
+                           class="btn btn-outline-dark"
+                           th:if="${isAdmin}">
+                            Admin Panel
+                        </a>
+
+                        <a th:href="@{/logout}" class="btn btn-danger">Logout</a>
+                    </div>
+
                 </div>
             </div>
         </div>
