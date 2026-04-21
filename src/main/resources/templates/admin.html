@@ -38,12 +38,18 @@
             font-size: 1.5rem;
         }
 
+        .stat-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
         .stat-card {
-            background: linear-gradient(135deg, #a855f7, #9333ea);
-            border-radius: 22px;
+            background: linear-gradient(135deg, #c300ff, #a100ff);
+            border-radius: 28px;
             color: #fff6b0;
-            min-height: 140px;
-            box-shadow: 0 4px 0 #c026d3, 0 8px 20px rgba(128, 0, 128, 0.18);
+            min-height: 170px;
+            box-shadow: 0 4px 0 #d11cff, 0 8px 20px rgba(128, 0, 128, 0.18);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -51,17 +57,23 @@
             padding: 20px;
             font-size: 1.2rem;
             font-weight: 600;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 0 #d11cff, 0 14px 28px rgba(128, 0, 128, 0.24);
         }
 
         .stat-card .big-number {
-            font-size: 2rem;
+            font-size: 2.8rem;
             display: block;
             margin-bottom: 8px;
         }
 
         .overview-box {
-            background-color: rgba(255,255,255,0.25);
-            border-radius: 24px;
+            background-color: rgba(255,255,255,0.22);
+            border-radius: 28px;
             overflow: hidden;
             box-shadow: 0 4px 14px rgba(0,0,0,0.05);
         }
@@ -89,34 +101,6 @@
             font-weight: 700;
             font-size: 1.7rem;
         }
-
-        .nav-buttons .btn {
-            border-radius: 16px;
-            font-weight: 600;
-            padding: 12px 18px;
-        }
-
-        .btn-purple {
-            background-color: #7a00c9;
-            color: white;
-            border: none;
-        }
-
-        .btn-purple:hover {
-            background-color: #6800aa;
-            color: white;
-        }
-
-        .btn-soft {
-            background-color: #d8b4fe;
-            color: #5b21b6;
-            border: none;
-        }
-
-        .btn-soft:hover {
-            background-color: #c084fc;
-            color: #4c1d95;
-        }
     </style>
 </head>
 <body>
@@ -135,20 +119,24 @@
 
     <div class="row g-4 mt-3">
         <div class="col-md-6">
-            <div class="stat-card">
-                <div>
-                    <span class="big-number" th:text="${userCount}">0</span>
-                    Active students
+            <a th:href="@{/admin/accounts}" class="stat-link">
+                <div class="stat-card">
+                    <div>
+                        <span class="big-number" th:text="${userCount}">0</span>
+                        Active students
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
         <div class="col-md-6">
-            <div class="stat-card">
-                <div>
-                    <span class="big-number" th:text="${offerCount}">0</span>
-                    Tutoring offers
+            <a th:href="@{/admin/offers}" class="stat-link">
+                <div class="stat-card">
+                    <div>
+                        <span class="big-number" th:text="${offerCount}">0</span>
+                        Tutoring offers
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
     </div>
 
@@ -173,21 +161,6 @@
         <div class="overview-row d-flex justify-content-between align-items-center">
             <div class="overview-label">Top Teacher</div>
             <div class="overview-value" th:text="${topTeacher}">N/A</div>
-        </div>
-    </div>
-
-    <div class="row g-3 mt-4 nav-buttons">
-        <div class="col-md-3">
-            <a th:href="@{/admin/offers}" class="btn btn-purple w-100">Manage Offers</a>
-        </div>
-        <div class="col-md-3">
-            <a th:href="@{/admin/accounts}" class="btn btn-soft w-100">Manage Accounts</a>
-        </div>
-        <div class="col-md-3">
-            <a th:href="@{/profile}" class="btn btn-outline-dark w-100">Back to Profile</a>
-        </div>
-        <div class="col-md-3">
-            <a th:href="@{/logout}" class="btn btn-danger w-100">Logout</a>
         </div>
     </div>
 
