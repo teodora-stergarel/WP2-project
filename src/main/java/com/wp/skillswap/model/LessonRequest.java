@@ -26,4 +26,8 @@ public class LessonRequest {
     @ManyToOne
     @JoinColumn(name = "offer_id", nullable = false)
     private Offer offer;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private RequestStatus status;
 }

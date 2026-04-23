@@ -2,10 +2,10 @@ package com.wp.skillswap.controller;
 
 import com.wp.skillswap.model.LessonRequest;
 import com.wp.skillswap.model.Offer;
+import com.wp.skillswap.model.RequestStatus;
 import com.wp.skillswap.model.User;
 import com.wp.skillswap.repository.LessonRequestRepository;
 import com.wp.skillswap.repository.OfferRepository;
-import com.wp.skillswap.repository.UserRepository;
 import com.wp.skillswap.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,16 +19,13 @@ public class OfferController {
 
     private final OfferRepository offerRepository;
     private final LessonRequestRepository lessonRequestRepository;
-    private final UserRepository userRepository;
     private final UserService userService;
 
     public OfferController(OfferRepository offerRepository,
                            LessonRequestRepository lessonRequestRepository,
-                           UserRepository userRepository,
                            UserService userService) {
         this.offerRepository = offerRepository;
         this.lessonRequestRepository = lessonRequestRepository;
-        this.userRepository = userRepository;
         this.userService = userService;
     }
 
@@ -68,8 +65,10 @@ public class OfferController {
             return "redirect:/offers?error=forbidden";
         }
 
+        lessonRequestRepository.deleteByOffer(offer);
         offerRepository.delete(offer);
-        return "redirect:/offers?deleted";
+
+        return "redirect:/offers?success=deleted";
     }
 
     @PostMapping("/offers/request/{id}")
@@ -87,23 +86,14 @@ public class OfferController {
             return "redirect:/offers?error=ownoffer";
         }
 
-        if (requester.getCreditsBalance() < offer.getPriceCredits()) {
-            return "redirect:/offers?error=notenoughcredits";
-        }
-
-        requester.setCreditsBalance(requester.getCreditsBalance() - offer.getPriceCredits());
-        owner.setCreditsBalance(owner.getCreditsBalance() + offer.getPriceCredits());
-
-        userRepository.save(requester);
-        userRepository.save(owner);
-
         LessonRequest lessonRequest = new LessonRequest();
         lessonRequest.setOffer(offer);
         lessonRequest.setRequester(requester);
         lessonRequest.setCreatedAt(LocalDateTime.now());
+        lessonRequest.setStatus(RequestStatus.PENDING);
 
         lessonRequestRepository.save(lessonRequest);
 
-        return "redirect:/offers?success=requested";
+        return "redirect:/lesson-requests?success=requested";
     }
 }
