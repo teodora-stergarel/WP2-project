@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Admin - Offer Details</title>
+  <meta charset="UTF-8">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+        background-color: #efefdf;
+        font-family: Georgia, serif;
+    }
+
+    .header {
+        background: linear-gradient(90deg, #6a00b9, #7a00c9);
+        color: white;
+        padding: 20px 30px;
+        border-radius: 0 0 20px 20px;
+    }
+
+    .btn-back {
+        background-color: #d8b4fe;
+        color: #5b21b6;
+        font-weight: bold;
+        border-radius: 18px;
+        border: none;
+        padding: 10px 18px;
+        text-decoration: none;
+    }
+
+    .btn-back:hover {
+        background-color: #c084fc;
+        color: #4c1d95;
+    }
+
+    .details-card {
+        background: white;
+        border: 4px solid #6a00b9;
+        border-radius: 28px;
+        padding: 30px;
+        box-shadow: 0 8px 20px rgba(106, 0, 185, 0.12);
+    }
+
+    .offer-badge {
+        display: inline-block;
+        background-color: #d8b4fe;
+        color: #5b21b6;
+        border-radius: 20px;
+        padding: 8px 20px;
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        width: fit-content;
+    }
+
+    .section-label {
+        color: #6a00b9;
+        font-weight: bold;
+        margin-bottom: 6px;
+    }
+
+    .section-box {
+        background-color: #f8f5ff;
+        border-radius: 18px;
+        padding: 14px 16px;
+        margin-bottom: 18px;
+        border: 1px solid #e9d5ff;
+    }
+
+    .action-btn {
+        border-radius: 16px;
+        padding: 12px 18px;
+        font-weight: 600;
+    }
+
+    .btn-delete-offer {
+        background-color: #dc3545;
+        color: white;
+        border: none;
+    }
+
+    .btn-delete-offer:hover {
+        background-color: #bb2d3b;
+        color: white;
+    }
+
+    .btn-report {
+        background-color: #f59e0b;
+        color: white;
+        border: none;
+    }
+
+    .btn-report:hover {
+        background-color: #d97706;
+        color: white;
+    }
+
+    .btn-soft {
+        background-color: #6a00b9;
+        color: white;
+        border: none;
+    }
+
+    .btn-soft:hover {
+        background-color: #56009a;
+        color: white;
+    }
+
+    .attachment-link {
+        text-decoration: none;
+        font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container-fluid px-4 px-md-5 pb-5">
+
+  <div class="header d-flex justify-content-between align-items-center mt-3">
+    <h2 class="m-0">Offer Details</h2>
+    <a th:href="@{/admin/offers}" class="btn-back">Back to Offers</a>
+  </div>
+
+  <div class="row justify-content-center mt-5">
+    <div class="col-lg-8">
+      <div class="details-card">
+
+        <div class="offer-badge" th:text="${offer.title}">Programming</div>
+
+        <div class="section-label">Owner</div>
+        <div class="section-box" th:text="${offer.owner.name} + ' (' + ${offer.owner.email} + ')'">
+          Owner Name (owner@email.com)
+        </div>
+
+        <div class="section-label">Price</div>
+        <div class="section-box" th:text="${offer.priceCredits} + ' credits'">
+          5 credits
+        </div>
+
+        <div class="section-label">Created At</div>
+        <div class="section-box" th:text="${offer.createdAt}">
+          2026-01-01T10:00
+        </div>
+
+        <div class="section-label">Description</div>
+        <div class="section-box" th:text="${offer.description}">
+          Full description of the offer.
+        </div>
+
+        <div class="section-label" th:if="${offer.attachmentPath != null}">Attachment</div>
+        <div class="section-box" th:if="${offer.attachmentPath != null}">
+          <a th:href="${offer.attachmentPath}" class="attachment-link" target="_blank">Open attachment</a>
+        </div>
+
+        <div class="d-flex flex-wrap gap-3 mt-4">
+          <a th:href="@{'/admin/offers/delete/' + ${offer.id}}"
+             class="btn action-btn btn-delete-offer"
+             onclick="return confirm('Are you sure you want to delete this offer?');">
+            Delete Offer
+          </a>
+
+          <button type="button" class="btn action-btn btn-report" onclick="alert('Report feature coming soon.')">
+            Report User
+          </button>
+
+          <a th:href="@{/admin}" class="btn action-btn btn-soft">
+            Go to Dashboard
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
