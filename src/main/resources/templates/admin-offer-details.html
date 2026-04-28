@@ -158,9 +158,11 @@
             Delete Offer
           </a>
 
-          <button type="button" class="btn action-btn btn-report" onclick="alert('Report feature coming soon.')">
+          <a th:href="@{/admin/users/report/{id}(id=${offer.owner.id})}"
+             class="btn action-btn btn-report"
+             onclick="return confirm('Report this user? This will add 1 penalty.');">
             Report User
-          </button>
+          </a>
 
           <a th:href="@{/admin}" class="btn action-btn btn-soft">
             Go to Dashboard

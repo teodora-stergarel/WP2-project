@@ -34,4 +34,7 @@ public class User {
 
     @Column(nullable = false)
     private Integer creditsBalance;
+
+    @Column(nullable = false)
+    private Integer penalties = 0;
 }

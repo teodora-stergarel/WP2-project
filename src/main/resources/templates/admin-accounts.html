@@ -92,7 +92,7 @@
                 <td th:text="${user.name}">Name</td>
                 <td th:text="${user.email}">Email</td>
                 <td th:text="${user.creditsBalance}">0</td>
-                <td>0</td>
+                <td th:text="${user.penalties}">0</td>
 
                 <td>
                     <span th:if="${user.role.name() == 'ADMIN'}"

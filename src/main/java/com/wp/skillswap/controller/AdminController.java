@@ -32,7 +32,6 @@ public class AdminController {
 
     @GetMapping("/admin")
     public String adminDashboard(Model model, Principal principal) {
-
         List<User> users = userRepository.findAll();
         List<Offer> offers = offerRepository.findAll();
 
@@ -58,7 +57,6 @@ public class AdminController {
     @PostMapping("/admin/accounts/delete/{id}")
     @Transactional
     public String deleteUser(@PathVariable Long id, Principal principal) {
-
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid user id: " + id));
 
@@ -84,6 +82,21 @@ public class AdminController {
         return "redirect:/admin/accounts";
     }
 
+    @GetMapping("/admin/users/report/{id}")
+    public String reportUser(@PathVariable Long id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid user id: " + id));
+
+        if (user.getPenalties() == null) {
+            user.setPenalties(0);
+        }
+
+        user.setPenalties(user.getPenalties() + 1);
+        userRepository.save(user);
+
+        return "redirect:/admin/accounts";
+    }
+
     @GetMapping("/admin/offers")
     public String adminOffers(Model model) {
         model.addAttribute("offers", offerRepository.findAll());
@@ -104,7 +117,6 @@ public class AdminController {
     @GetMapping("/admin/offers/delete/{id}")
     @Transactional
     public String deleteOffer(@PathVariable Long id) {
-
         Offer offer = offerRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid offer id: " + id));
 
