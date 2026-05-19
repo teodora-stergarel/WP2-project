@@ -31,7 +31,11 @@
                 <a th:href="@{/offers/create}">Add offer</a>
                 <a th:href="@{/profile}">My profile</a>
                 <a th:href="@{/lesson-requests}">Lesson requests</a>
-                <a th:href="@{/logout}">Logout</a>
+                <form th:action="@{/logout}" method="post" style="margin:0;">
+                    <button type="submit" class="logout-btn">
+                        Logout
+                    </button>
+                </form>
             </div>
         </div>
     </div>
@@ -112,60 +116,39 @@
     </h2>
 
     <section style="
-        display:grid;
-        grid-template-columns:repeat(4,1fr);
-        gap:35px;
-    ">
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:35px;
+">
+
+    <a th:each="offer : ${featuredOffers}"
+       th:href="@{/offers/{id}(id=${offer.id})}"
+       style="text-decoration:none; color:inherit;">
 
         <div class="offer-card-custom">
-            <div class="category-pill">Programming</div>
+            <div class="category-pill" th:text="${offer.title}">
+                Offer title
+            </div>
 
-            <p style="margin-top:25px;">
-                Learn Java, Spring Boot and web development basics.
+            <p style="margin-top:25px;" th:text="${#strings.abbreviate(offer.description, 120)}">
+                Offer description
             </p>
 
             <div style="position:absolute; bottom:10px; right:10px;">
-                <span class="author-pill">@Maria P.</span>
+                <span class="author-pill" th:text="'@' + ${offer.owner.name}">
+                    @User
+                </span>
             </div>
         </div>
 
-        <div class="offer-card-custom">
-            <div class="category-pill">Math</div>
+    </a>
 
-            <p style="margin-top:25px;">
-                Algebra and calculus tutoring for university students.
-            </p>
+</section>
 
-            <div style="position:absolute; bottom:10px; right:10px;">
-                <span class="author-pill">@Alex T.</span>
-            </div>
-        </div>
-
-        <div class="offer-card-custom">
-            <div class="category-pill">Music</div>
-
-            <p style="margin-top:25px;">
-                Beginner guitar lessons and music theory.
-            </p>
-
-            <div style="position:absolute; bottom:10px; right:10px;">
-                <span class="author-pill">@Maria P.</span>
-            </div>
-        </div>
-
-        <div class="offer-card-custom">
-            <div class="category-pill">Programming</div>
-
-            <p style="margin-top:25px;">
-                Frontend HTML/CSS/JS mentoring.
-            </p>
-
-            <div style="position:absolute; bottom:10px; right:10px;">
-                <span class="author-pill">@Teo D.</span>
-            </div>
-        </div>
-
-    </section>
+<div th:if="${#lists.isEmpty(featuredOffers)}"
+     style="font-size:30px; font-weight:bold; margin-top:30px;">
+    No offers available yet.
+</div>
 
 </main>
 

@@ -115,7 +115,11 @@
                             Admin Panel
                         </a>
 
-                        <a th:href="@{/logout}" class="btn btn-danger">Logout</a>
+                        <form th:action="@{/logout}" method="post" style="margin:0;">
+                            <button type="submit" class="logout-btn">
+                                Logout
+                            </button>
+                        </form>
                     </div>
 
                 </div>

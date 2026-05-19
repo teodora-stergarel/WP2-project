@@ -1,0 +1,332 @@
+2026.05.19 15:34:29 INFO  Started: Metals version 1.6.7 in folders '/Users/teodora/WP2-project' for client Visual Studio Code 1.120.0.
+2026.05.19 15:34:29 INFO  Memory monitor started
+2026.05.19 15:34:29 WARN  Using H2 2.4.240 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
+2026.05.19 15:34:29 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/config/WebConfig.java. Using fallback presentation compiler.
+2026.05.19 15:34:29 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/config/WebConfig.java. Using fallback presentation compiler.
+2026.05.19 15:34:52 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/config/WebConfig.java. Using fallback presentation compiler.
+2026.05.19 15:35:20 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/config/WebConfig.java. Using fallback presentation compiler.
+2026.05.19 15:35:20 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/config/WebConfig.java. Using fallback presentation compiler.
+2026.05.19 15:35:20 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/config/WebConfig.java. Using fallback presentation compiler.
+2026.05.19 15:35:20 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/config/WebConfig.java. Using fallback presentation compiler.
+2026.05.19 15:35:22 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/config/WebConfig.java. Using fallback presentation compiler.
+2026.05.19 15:35:24 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/config/WebConfig.java. Using fallback presentation compiler.
+2026.05.19 15:35:27 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/config/WebConfig.java. Using fallback presentation compiler.
+2026.05.19 15:35:27 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/config/WebConfig.java. Using fallback presentation compiler.
+2026.05.19 15:36:53 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/config/WebConfig.java. Using fallback presentation compiler.
+2026.05.19 15:36:53 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/config/WebConfig.java. Using fallback presentation compiler.
+2026.05.19 15:36:53 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/config/WebConfig.java. Using fallback presentation compiler.
+2026.05.19 15:36:53 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/config/WebConfig.java. Using fallback presentation compiler.
+2026.05.19 15:36:53 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/config/WebConfig.java. Using fallback presentation compiler.
+2026.05.19 15:37:08 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/config/WebConfig.java. Using fallback presentation compiler.
+May 19, 2026 3:37:15 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+2026.05.19 15:37:15 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/config/WebConfig.java. Using fallback presentation compiler.
+May 19, 2026 3:37:16 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+2026.05.19 15:37:15 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/config/WebConfig.java. Using fallback presentation compiler.
+2026.05.19 15:41:48 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 15:41:48 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 15:41:48 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 15:41:48 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 15:41:57 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 15:42:33 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 15:45:32 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/config/WebConfig.java. Using fallback presentation compiler.
+2026.05.19 15:45:38 INFO  no build target found for /Users/teodora/WP2-project/src/main/config/WebConfig.java. Using fallback presentation compiler.
+2026.05.19 15:45:38 WARN  no build target for: /Users/teodora/WP2-project/src/main/config/WebConfig.java
+2026.05.19 15:45:38 INFO  no build target found for /Users/teodora/WP2-project/src/main/config/WebConfig.java. Using fallback presentation compiler.
+2026.05.19 15:45:38 INFO  no build target found for /Users/teodora/WP2-project/src/main/config/WebConfig.java. Using fallback presentation compiler.
+2026.05.19 15:45:38 INFO  no build target found for /Users/teodora/WP2-project/src/main/config/WebConfig.java. Using fallback presentation compiler.
+2026.05.19 15:45:38 INFO  no build target found for /Users/teodora/WP2-project/src/main/config/WebConfig.java. Using fallback presentation compiler.
+2026.05.19 15:49:07 INFO  Shutting down server
+2026.05.19 15:49:07 INFO  Memory monitor stopped
+2026.05.19 15:49:07 INFO  shutting down Metals
+2026.05.19 15:49:07 INFO  Exiting server
+2026.05.19 15:49:26 INFO  Started: Metals version 1.6.7 in folders '/Users/teodora/WP2-project' for client Visual Studio Code 1.120.0.
+2026.05.19 15:49:26 INFO  Memory monitor started
+2026.05.19 15:49:26 WARN  Using H2 2.4.240 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
+2026.05.19 15:49:27 INFO  no build target found for /Users/teodora/WP2-project/src/main/config/WebConfig.java. Using fallback presentation compiler.
+2026.05.19 15:49:27 INFO  no build target found for /Users/teodora/WP2-project/src/main/config/WebConfig.java. Using fallback presentation compiler.
+May 19, 2026 3:49:29 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+2026.05.19 15:49:38 WARN  no build target for: /Users/teodora/WP2-project/src/main/config/WebConfig.java
+2026.05.19 15:49:38 INFO  no build target found for /Users/teodora/WP2-project/src/main/config/WebConfig.java. Using fallback presentation compiler.
+2026.05.19 15:49:47 WARN  no build target for: /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/SkillswapApplication.java
+2026.05.19 15:49:47 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/SkillswapApplication.java. Using fallback presentation compiler.
+2026.05.19 15:49:47 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/SkillswapApplication.java. Using fallback presentation compiler.
+2026.05.19 15:49:47 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/SkillswapApplication.java. Using fallback presentation compiler.
+2026.05.19 15:49:48 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/SkillswapApplication.java. Using fallback presentation compiler.
+2026.05.19 15:56:00 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/SkillswapApplication.java. Using fallback presentation compiler.
+2026.05.19 15:56:25 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 15:56:25 WARN  no build target for: /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java
+2026.05.19 15:56:25 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+May 19, 2026 3:56:25 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 26
+2026.05.19 15:56:25 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 15:56:25 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 15:56:30 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 15:56:30 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 15:56:30 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 15:56:30 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 15:56:30 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 15:56:31 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 15:56:31 WARN  no build target for: /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java
+2026.05.19 15:56:31 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 15:56:48 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 16:31:52 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/HomeController.java. Using fallback presentation compiler.
+2026.05.19 16:31:52 WARN  no build target for: /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/HomeController.java
+2026.05.19 16:31:52 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/HomeController.java. Using fallback presentation compiler.
+2026.05.19 16:31:52 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/HomeController.java. Using fallback presentation compiler.
+2026.05.19 16:31:53 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/HomeController.java. Using fallback presentation compiler.
+2026.05.19 16:31:52 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/HomeController.java. Using fallback presentation compiler.
+2026.05.19 16:31:54 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/HomeController.java. Using fallback presentation compiler.
+2026.05.19 16:31:54 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/HomeController.java. Using fallback presentation compiler.
+2026.05.19 16:31:54 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/HomeController.java. Using fallback presentation compiler.
+2026.05.19 16:31:54 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/HomeController.java. Using fallback presentation compiler.
+2026.05.19 16:31:54 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/HomeController.java. Using fallback presentation compiler.
+2026.05.19 16:31:54 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/HomeController.java. Using fallback presentation compiler.
+2026.05.19 16:31:54 WARN  no build target for: /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/HomeController.java
+2026.05.19 16:31:54 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/HomeController.java. Using fallback presentation compiler.
+2026.05.19 16:31:58 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/HomeController.java. Using fallback presentation compiler.
+2026.05.19 16:52:40 INFO  no build target found for /Users/teodora/WP2-project/src/main/config/WebConfig.java. Using fallback presentation compiler.
+2026.05.19 16:57:37 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/repository/OfferRepository.java. Using fallback presentation compiler.
+2026.05.19 16:57:37 WARN  no build target for: /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/repository/OfferRepository.java
+2026.05.19 16:57:37 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/repository/OfferRepository.java. Using fallback presentation compiler.
+2026.05.19 16:57:37 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/repository/OfferRepository.java. Using fallback presentation compiler.
+2026.05.19 16:57:37 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/repository/OfferRepository.java. Using fallback presentation compiler.
+2026.05.19 16:57:40 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/repository/OfferRepository.java. Using fallback presentation compiler.
+2026.05.19 16:57:40 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/repository/OfferRepository.java. Using fallback presentation compiler.
+2026.05.19 16:57:41 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/repository/OfferRepository.java. Using fallback presentation compiler.
+2026.05.19 16:57:41 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/repository/OfferRepository.java. Using fallback presentation compiler.
+2026.05.19 16:57:41 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/repository/OfferRepository.java. Using fallback presentation compiler.
+2026.05.19 16:57:41 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/repository/OfferRepository.java. Using fallback presentation compiler.
+2026.05.19 16:57:42 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/repository/OfferRepository.java. Using fallback presentation compiler.
+2026.05.19 16:57:42 WARN  no build target for: /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/repository/OfferRepository.java
+2026.05.19 16:57:42 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/repository/OfferRepository.java. Using fallback presentation compiler.
+2026.05.19 16:57:48 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/AdminController.java. Using fallback presentation compiler.
+2026.05.19 16:57:48 WARN  no build target for: /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/AdminController.java
+2026.05.19 16:57:48 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/AdminController.java. Using fallback presentation compiler.
+2026.05.19 16:57:48 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/AdminController.java. Using fallback presentation compiler.
+2026.05.19 16:57:48 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/AdminController.java. Using fallback presentation compiler.
+2026.05.19 16:57:48 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/AdminController.java. Using fallback presentation compiler.
+2026.05.19 16:57:52 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/AdminController.java. Using fallback presentation compiler.
+2026.05.19 16:57:52 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/AdminController.java. Using fallback presentation compiler.
+2026.05.19 16:57:52 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/AdminController.java. Using fallback presentation compiler.
+2026.05.19 16:58:04 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/AdminController.java. Using fallback presentation compiler.
+2026.05.19 16:58:04 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/AdminController.java. Using fallback presentation compiler.
+2026.05.19 16:58:05 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/AdminController.java. Using fallback presentation compiler.
+2026.05.19 16:58:09 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/AdminController.java. Using fallback presentation compiler.
+2026.05.19 16:58:09 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 16:58:10 WARN  no build target for: /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java
+2026.05.19 16:58:10 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 16:58:09 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 16:58:10 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 16:58:10 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 16:58:10 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 16:58:10 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 16:58:11 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 16:58:14 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 16:59:21 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 16:59:21 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 16:59:21 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 16:59:23 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/AdminController.java. Using fallback presentation compiler.
+2026.05.19 16:59:23 WARN  no build target for: /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/AdminController.java
+2026.05.19 16:59:23 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/AdminController.java. Using fallback presentation compiler.
+2026.05.19 16:59:23 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/AdminController.java. Using fallback presentation compiler.
+2026.05.19 16:59:23 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/AdminController.java. Using fallback presentation compiler.
+2026.05.19 16:59:23 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/AdminController.java. Using fallback presentation compiler.
+2026.05.19 16:59:24 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/AdminController.java. Using fallback presentation compiler.
+2026.05.19 16:59:26 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/AdminController.java. Using fallback presentation compiler.
+2026.05.19 16:59:47 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 16:59:47 WARN  no build target for: /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java
+2026.05.19 16:59:47 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 16:59:47 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 16:59:47 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 16:59:49 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/repository/OfferRepository.java. Using fallback presentation compiler.
+2026.05.19 16:59:49 WARN  no build target for: /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/repository/OfferRepository.java
+2026.05.19 16:59:49 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/repository/OfferRepository.java. Using fallback presentation compiler.
+2026.05.19 16:59:49 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/repository/OfferRepository.java. Using fallback presentation compiler.
+2026.05.19 16:59:49 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/repository/OfferRepository.java. Using fallback presentation compiler.
+2026.05.19 16:59:53 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/repository/OfferRepository.java. Using fallback presentation compiler.
+2026.05.19 16:59:53 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/repository/OfferRepository.java. Using fallback presentation compiler.
+2026.05.19 16:59:53 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/repository/OfferRepository.java. Using fallback presentation compiler.
+2026.05.19 16:59:53 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/repository/OfferRepository.java. Using fallback presentation compiler.
+2026.05.19 16:59:56 WARN  no build target for: /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/repository/OfferRepository.java
+2026.05.19 16:59:56 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/repository/OfferRepository.java. Using fallback presentation compiler.
+2026.05.19 16:59:59 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/repository/OfferRepository.java. Using fallback presentation compiler.
+2026.05.19 16:59:59 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/repository/OfferRepository.java. Using fallback presentation compiler.
+2026.05.19 17:00:03 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/repository/OfferRepository.java. Using fallback presentation compiler.
+2026.05.19 17:00:03 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/repository/OfferRepository.java. Using fallback presentation compiler.
+2026.05.19 17:00:03 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/repository/OfferRepository.java. Using fallback presentation compiler.
+2026.05.19 17:00:03 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/repository/OfferRepository.java. Using fallback presentation compiler.
+2026.05.19 17:00:04 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/repository/OfferRepository.java. Using fallback presentation compiler.
+2026.05.19 17:00:04 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/repository/OfferRepository.java. Using fallback presentation compiler.
+2026.05.19 17:00:11 WARN  no build target for: /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/repository/OfferRepository.java
+2026.05.19 17:00:11 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/repository/OfferRepository.java. Using fallback presentation compiler.
+2026.05.19 17:00:16 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/AdminController.java. Using fallback presentation compiler.
+2026.05.19 17:00:16 WARN  no build target for: /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/AdminController.java
+2026.05.19 17:00:16 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/AdminController.java. Using fallback presentation compiler.
+2026.05.19 17:00:16 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/AdminController.java. Using fallback presentation compiler.
+2026.05.19 17:00:16 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/AdminController.java. Using fallback presentation compiler.
+2026.05.19 17:00:16 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/AdminController.java. Using fallback presentation compiler.
+2026.05.19 17:00:32 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 17:00:32 WARN  no build target for: /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java
+2026.05.19 17:00:32 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 17:00:32 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 17:00:32 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 17:00:34 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 17:00:34 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 17:00:34 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 17:00:34 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 17:00:34 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 17:00:35 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 17:00:36 WARN  no build target for: /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java
+2026.05.19 17:00:36 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 17:01:55 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 17:01:55 WARN  no build target for: /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java
+2026.05.19 17:01:55 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 17:01:55 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 17:01:55 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 17:01:56 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 17:01:59 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/repository/OfferRepository.java. Using fallback presentation compiler.
+2026.05.19 17:01:59 WARN  no build target for: /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/repository/OfferRepository.java
+2026.05.19 17:01:59 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/repository/OfferRepository.java. Using fallback presentation compiler.
+2026.05.19 17:01:59 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/repository/OfferRepository.java. Using fallback presentation compiler.
+2026.05.19 17:01:59 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/repository/OfferRepository.java. Using fallback presentation compiler.
+2026.05.19 17:02:01 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/repository/OfferRepository.java. Using fallback presentation compiler.
+2026.05.19 17:02:01 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/repository/OfferRepository.java. Using fallback presentation compiler.
+2026.05.19 17:02:01 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/repository/OfferRepository.java. Using fallback presentation compiler.
+2026.05.19 17:02:01 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/repository/OfferRepository.java. Using fallback presentation compiler.
+2026.05.19 17:02:01 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/repository/OfferRepository.java. Using fallback presentation compiler.
+2026.05.19 17:02:01 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/repository/OfferRepository.java. Using fallback presentation compiler.
+2026.05.19 17:02:02 WARN  no build target for: /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/repository/OfferRepository.java
+2026.05.19 17:02:02 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/repository/OfferRepository.java. Using fallback presentation compiler.
+2026.05.19 17:06:58 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/AdminController.java. Using fallback presentation compiler.
+2026.05.19 19:28:42 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 19:28:42 WARN  no build target for: /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java
+2026.05.19 19:28:42 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 19:28:42 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 19:28:42 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 19:28:45 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 19:28:50 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 19:28:52 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 19:28:53 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 19:28:54 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 19:28:57 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 19:28:57 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 19:29:13 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 19:29:13 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 19:29:13 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 19:29:28 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 19:29:34 WARN  no build target for: /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java
+2026.05.19 19:29:34 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 20:00:49 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 20:01:20 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 20:01:20 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 20:01:20 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 20:01:22 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 20:01:25 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 20:01:25 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 20:01:26 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 20:01:26 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 20:01:26 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 20:01:27 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 20:01:27 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 20:01:28 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 20:01:36 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 20:01:36 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 20:01:36 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 20:01:36 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 20:01:37 WARN  no build target for: /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java
+2026.05.19 20:01:37 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 23:05:51 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 23:05:51 WARN  no build target for: /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java
+May 19, 2026 11:05:51 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 404
+2026.05.19 23:05:51 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 23:05:51 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 23:05:51 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 23:05:57 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 23:05:57 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 23:05:57 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 23:05:58 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 23:05:59 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 23:05:59 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 23:06:07 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 23:06:07 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 23:06:08 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.19 23:06:08 WARN  no build target for: /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java
+2026.05.19 23:06:08 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.20 00:30:12 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/model/Offer.java. Using fallback presentation compiler.
+2026.05.20 00:30:12 WARN  no build target for: /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/model/Offer.java
+2026.05.20 00:30:12 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/model/Offer.java. Using fallback presentation compiler.
+May 20, 2026 12:30:12 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 466
+2026.05.20 00:30:12 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/model/Offer.java. Using fallback presentation compiler.
+2026.05.20 00:30:12 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/model/Offer.java. Using fallback presentation compiler.
+2026.05.20 00:30:18 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/model/Offer.java. Using fallback presentation compiler.
+2026.05.20 00:30:18 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/model/Offer.java. Using fallback presentation compiler.
+2026.05.20 00:30:18 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/model/Offer.java. Using fallback presentation compiler.
+2026.05.20 00:30:18 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/model/Offer.java. Using fallback presentation compiler.
+2026.05.20 00:30:19 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/model/Offer.java. Using fallback presentation compiler.
+2026.05.20 00:30:19 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/model/Offer.java. Using fallback presentation compiler.
+2026.05.20 00:30:24 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/model/Offer.java. Using fallback presentation compiler.
+2026.05.20 00:55:19 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/model/Offer.java. Using fallback presentation compiler.
+2026.05.20 00:55:19 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java. Using fallback presentation compiler.
+2026.05.20 00:55:19 WARN  no build target for: /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java
+May 20, 2026 12:55:20 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 493
+2026.05.20 00:55:20 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java. Using fallback presentation compiler.
+2026.05.20 00:55:19 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java. Using fallback presentation compiler.
+May 20, 2026 12:55:20 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 496
+2026.05.20 00:55:20 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java. Using fallback presentation compiler.
+2026.05.20 00:55:42 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java. Using fallback presentation compiler.
+2026.05.20 00:56:05 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java. Using fallback presentation compiler.
+2026.05.20 00:56:06 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java. Using fallback presentation compiler.
+2026.05.20 00:56:06 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java. Using fallback presentation compiler.
+2026.05.20 00:56:07 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java. Using fallback presentation compiler.
+2026.05.20 00:56:08 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java. Using fallback presentation compiler.
+2026.05.20 00:56:08 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java. Using fallback presentation compiler.
+2026.05.20 00:56:08 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java. Using fallback presentation compiler.
+2026.05.20 00:56:15 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java. Using fallback presentation compiler.
+2026.05.20 00:56:15 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java. Using fallback presentation compiler.
+2026.05.20 00:56:15 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java. Using fallback presentation compiler.
+2026.05.20 00:56:16 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java. Using fallback presentation compiler.
+2026.05.20 00:56:16 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java. Using fallback presentation compiler.
+2026.05.20 00:56:18 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java. Using fallback presentation compiler.
+2026.05.20 00:56:18 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java. Using fallback presentation compiler.
+2026.05.20 00:56:18 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java. Using fallback presentation compiler.
+2026.05.20 00:56:18 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java. Using fallback presentation compiler.
+2026.05.20 00:56:19 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java. Using fallback presentation compiler.
+2026.05.20 00:56:19 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java. Using fallback presentation compiler.
+2026.05.20 00:56:20 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java. Using fallback presentation compiler.
+2026.05.20 00:56:20 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java. Using fallback presentation compiler.
+2026.05.20 00:56:20 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java. Using fallback presentation compiler.
+2026.05.20 00:56:20 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java. Using fallback presentation compiler.
+2026.05.20 00:56:21 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java. Using fallback presentation compiler.
+2026.05.20 00:56:20 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java. Using fallback presentation compiler.
+2026.05.20 00:56:21 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java. Using fallback presentation compiler.
+2026.05.20 00:56:21 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java. Using fallback presentation compiler.
+2026.05.20 00:56:22 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java. Using fallback presentation compiler.
+2026.05.20 00:56:21 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java. Using fallback presentation compiler.
+2026.05.20 00:56:21 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java. Using fallback presentation compiler.
+2026.05.20 00:56:22 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java. Using fallback presentation compiler.
+2026.05.20 00:56:23 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java. Using fallback presentation compiler.
+2026.05.20 00:56:23 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java. Using fallback presentation compiler.
+2026.05.20 00:56:23 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java. Using fallback presentation compiler.
+2026.05.20 00:56:23 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java. Using fallback presentation compiler.
+2026.05.20 00:56:24 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java. Using fallback presentation compiler.
+2026.05.20 00:56:23 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java. Using fallback presentation compiler.
+2026.05.20 00:56:23 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java. Using fallback presentation compiler.
+2026.05.20 00:56:24 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java. Using fallback presentation compiler.
+2026.05.20 00:56:24 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java. Using fallback presentation compiler.
+2026.05.20 00:56:24 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java. Using fallback presentation compiler.
+2026.05.20 00:56:24 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java. Using fallback presentation compiler.
+2026.05.20 00:56:26 WARN  no build target for: /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java
+2026.05.20 00:56:26 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/security/SecurityConfig.java. Using fallback presentation compiler.
+2026.05.20 01:26:30 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.20 01:26:30 WARN  no build target for: /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java
+2026.05.20 01:26:30 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.20 01:26:30 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.20 01:26:30 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.20 01:26:32 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Add Offer - SkillSwap</title>
+    <title>Edit Offer - SkillSwap</title>
     <link rel="stylesheet" href="/css/style.css">
 
     <style>
@@ -80,7 +80,6 @@
         }
 
         .figma-select,
-        .figma-input,
         .description-area {
             background: #D9D9D9;
             border: none;
@@ -148,10 +147,20 @@
                 <a th:href="@{/profile}">My profile</a>
                 <a th:href="@{/lesson-requests}">Lesson requests</a>
                 <form th:action="@{/logout}" method="post" style="margin:0;">
-                   <button type="submit" class="logout-btn">
-                      Logout
-                    </button>
-                 </form>
+                  <button type="submit"
+                      style="
+                        background:none;
+                        border:none;
+                        padding:12px 16px;
+                        width:100%;
+                        text-align:left;
+                        cursor:pointer;
+                        font-size:16px;
+                        font-family:inherit;
+                      ">
+                    Logout
+                  </button>
+                </form>
             </div>
         </div>
     </div>
@@ -161,14 +170,14 @@
 
     <section class="offer-form-card">
 
-        <a th:href="@{/offers}" class="close-btn">×</a>
+        <a th:href="@{/profile}" class="close-btn">×</a>
 
         <div class="offer-form-header">
             <div class="plus-circle">+</div>
-            <h1 class="offer-form-title">Add New Offer</h1>
+            <h1 class="offer-form-title">Edit Offer</h1>
         </div>
 
-        <form th:action="@{/offers/create}" method="post">
+        <form th:action="@{/offers/edit/{id}(id=${offer.id})}" method="post">
 
             <div class="form-grid">
 
@@ -176,13 +185,12 @@
                     <label class="field-label">Choose Subject</label>
 
                     <select class="figma-select" name="title" required>
-                        <option value="" disabled selected>Select subject</option>
-                        <option value="Math">Math</option>
-                        <option value="Music">Music</option>
-                        <option value="Programming">Programming</option>
-                        <option value="Photoshop">Photoshop</option>
-                        <option value="WP">WP</option>
-                        <option value="Other">Other</option>
+                        <option value="Math" th:selected="${offer.title == 'Math'}">Math</option>
+                        <option value="Music" th:selected="${offer.title == 'Music'}">Music</option>
+                        <option value="Programming" th:selected="${offer.title == 'Programming'}">Programming</option>
+                        <option value="Photoshop" th:selected="${offer.title == 'Photoshop'}">Photoshop</option>
+                        <option value="WP" th:selected="${offer.title == 'WP'}">WP</option>
+                        <option value="Other" th:selected="${offer.title == 'Other'}">Other</option>
                     </select>
                 </div>
 
@@ -190,12 +198,11 @@
                     <label class="field-label">No of Credits</label>
 
                     <select class="figma-select" name="priceCredits" required>
-                        <option value="" disabled selected>Select</option>
-                        <option value="1">1 credit</option>
-                        <option value="2">2 credits</option>
-                        <option value="3">3 credits</option>
-                        <option value="4">4 credits</option>
-                        <option value="5">5 credits</option>
+                        <option value="1" th:selected="${offer.priceCredits == 1}">1 credit</option>
+                        <option value="2" th:selected="${offer.priceCredits == 2}">2 credits</option>
+                        <option value="3" th:selected="${offer.priceCredits == 3}">3 credits</option>
+                        <option value="4" th:selected="${offer.priceCredits == 4}">4 credits</option>
+                        <option value="5" th:selected="${offer.priceCredits == 5}">5 credits</option>
                     </select>
                 </div>
 
@@ -204,14 +211,15 @@
 
                     <textarea class="description-area"
                               name="description"
-                              required></textarea>
+                              required
+                              th:text="${offer.description}"></textarea>
                 </div>
 
             </div>
 
             <div class="actions">
-                <a th:href="@{/offers}" class="action-btn">Cancel</a>
-                <button type="submit" class="action-btn">Add</button>
+                <a th:href="@{/profile}" class="action-btn">Cancel</a>
+                <button type="submit" class="action-btn">Save Changes</button>
             </div>
 
         </form>

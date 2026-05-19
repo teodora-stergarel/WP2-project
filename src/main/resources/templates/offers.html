@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>Browse Offers - SkillSwap</title>
     <link rel="stylesheet" href="/css/style.css">
 
     <style>
-        .offers-page {
-            padding: 84px 36px 40px;
-        }
+        .offers-page { padding: 84px 36px 40px; }
 
         .filters-row {
             display: grid;
@@ -18,8 +17,7 @@
             align-items: center;
         }
 
-        .search-box,
-        .filter-box {
+        .search-box, .filter-box {
             height: 61px;
             background: #A8A8A8;
             border-radius: 18px;
@@ -31,12 +29,9 @@
             padding: 0 20px;
         }
 
-        .search-box::placeholder {
-            color: #F3EFDE;
-            opacity: 1;
-        }
+        .search-box::placeholder { color: #F3EFDE; opacity: 1; }
 
-        .new-offer-btn {
+        .new-offer-btn, .filter-submit-btn {
             height: 61px;
             background: #563A9C;
             color: #F3EFDE;
@@ -44,17 +39,17 @@
             text-decoration: none;
             font-size: 25px;
             font-weight: bold;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            border: none;
+            cursor: pointer;
         }
 
         .offers-grid-figma {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 36px 38px;
-            padding: 0 2px;
         }
+
+        .offer-link { text-decoration: none; color: inherit; }
 
         .offer-card-figma {
             height: 186px;
@@ -64,15 +59,16 @@
             position: relative;
             padding: 8px 14px 14px;
             overflow: hidden;
+            cursor: pointer;
         }
 
         .offer-subject {
             background: #C9BEFF;
             color: #563A9C;
             border-radius: 18px;
-            height: 30px;
             min-width: 145px;
             max-width: 190px;
+            height: 30px;
             display: inline-flex;
             justify-content: center;
             align-items: center;
@@ -134,7 +130,11 @@
                 <a th:href="@{/offers/create}">Add offer</a>
                 <a th:href="@{/profile}">My profile</a>
                 <a th:href="@{/lesson-requests}">Lesson requests</a>
-                <a th:href="@{/logout}">Logout</a>
+                <form th:action="@{/logout}" method="post" style="margin:0;">
+                    <button type="submit" class="logout-btn">
+                        Logout
+                    </button>
+                </form>
             </div>
         </div>
     </div>
@@ -142,57 +142,68 @@
 
 <main class="offers-page">
 
-    <section class="filters-row">
-        <input class="search-box" type="text" placeholder="Search offers ...">
+    <form th:action="@{/offers}" method="get" class="filters-row">
+        <input class="search-box"
+               type="text"
+               name="search"
+               placeholder="Search offers ..."
+               th:value="${search}">
 
-        <button class="filter-box" type="button">
-            Subject: any
+        <select class="filter-box" name="subject">
+            <option value="any">Subject: any</option>
+            <option value="programming" th:selected="${subject == 'programming'}">Programming</option>
+            <option value="math" th:selected="${subject == 'math'}">Math</option>
+            <option value="music" th:selected="${subject == 'music'}">Music</option>
+            <option value="photoshop" th:selected="${subject == 'photoshop'}">Photoshop</option>
+            <option value="wp" th:selected="${subject == 'wp'}">WP</option>
+        </select>
+
+        <select class="filter-box" name="credits">
+            <option value="">Credits: any</option>
+            <option value="1" th:selected="${credits == 1}">1 credit</option>
+            <option value="2" th:selected="${credits == 2}">2 credits</option>
+            <option value="3" th:selected="${credits == 3}">3 credits</option>
+            <option value="4" th:selected="${credits == 4}">4 credits</option>
+            <option value="5" th:selected="${credits == 5}">5 credits</option>
+        </select>
+
+        <button class="filter-submit-btn" type="submit">
+            Search
         </button>
+    </form>
 
-        <button class="filter-box" type="button">
-            Credits: any
-        </button>
-
-        <a th:href="@{/offers/create}" class="new-offer-btn">
+    <div style="margin-bottom: 40px;">
+        <a th:href="@{/offers/create}" class="new-offer-btn"
+           style="display:inline-flex; align-items:center; justify-content:center; padding: 0 40px;">
             + New offer
         </a>
-    </section>
-
-    <div th:if="${param.success == 'deleted'}" class="empty-message">
-        Offer deleted successfully.
-    </div>
-
-    <div th:if="${param.error == 'notenoughcredits'}" class="empty-message">
-        Not enough credits.
-    </div>
-
-    <div th:if="${param.error == 'ownoffer'}" class="empty-message">
-        You cannot request your own lesson.
-    </div>
-
-    <div th:if="${param.error == 'forbidden'}" class="empty-message">
-        You are not allowed to delete this offer.
     </div>
 
     <div th:if="${#lists.isEmpty(offers)}" class="empty-message">
-        No offers available yet.
+        No offers found.
     </div>
 
     <section class="offers-grid-figma" th:if="${!#lists.isEmpty(offers)}">
 
-        <div class="offer-card-figma" th:each="offer : ${offers}">
-            <div class="offer-subject" th:text="${offer.title}">
-                Programming
+        <a class="offer-link"
+           th:each="offer : ${offers}"
+           th:href="@{/offers/{id}(id=${offer.id})}">
+
+            <div class="offer-card-figma">
+                <div class="offer-subject" th:text="${offer.title}">
+                    Programming
+                </div>
+
+                <p class="offer-description" th:text="${offer.description}">
+                    Offer description
+                </p>
+
+                <span class="offer-author" th:text="'@' + ${offer.owner.name}">
+                    @User
+                </span>
             </div>
 
-            <p class="offer-description" th:text="${offer.description}">
-                Offer description
-            </p>
-
-            <span class="offer-author" th:text="'@' + ${offer.owner.name}">
-                @Maria P.
-            </span>
-        </div>
+        </a>
 
     </section>
 

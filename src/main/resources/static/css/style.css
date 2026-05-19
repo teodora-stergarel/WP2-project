@@ -164,3 +164,20 @@ body {
 .dropdown-menu-custom.show {
     display: flex;
 }
+
+.logout-btn {
+    background: none;
+    border: none;
+    color: #F3EFDE;
+    font-size: 22px;
+    font-weight: bold;
+    font-family: Georgia, serif;
+    cursor: pointer;
+
+    width: 100%;
+    text-align: left;
+
+    /*padding: 5px 40px; */
+
+    transition: 0.2s;
+}

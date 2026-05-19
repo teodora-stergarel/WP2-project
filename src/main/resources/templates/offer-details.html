@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Offer Details - SkillSwap</title>
+    <link rel="stylesheet" href="/css/style.css">
+
+    <style>
+        .offer-zoom-page {
+            min-height: calc(100vh - 86px);
+            padding: 110px 36px;
+            background: #F3EFDE;
+            position: relative;
+        }
+
+        .offer-zoom-overlay {
+            max-width: 880px;
+            min-height: 520px;
+            margin: 0 auto;
+            border: 7px solid #563A9C;
+            border-radius: 70px;
+            background: #F3EFDE;
+            position: relative;
+            padding: 95px 60px 45px;
+        }
+
+        .zoom-close {
+            position: absolute;
+            top: 28px;
+            right: 36px;
+            width: 52px;
+            height: 52px;
+            border: 4px solid #563A9C;
+            border-radius: 14px;
+            background: #F3EFDE;
+            color: #563A9C;
+            font-size: 42px;
+            font-weight: bold;
+            line-height: 42px;
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 5px rgba(0,0,0,0.25);
+        }
+
+        .zoom-content {
+            display: grid;
+            grid-template-columns: 215px 1fr;
+            gap: 32px;
+        }
+
+        .zoom-left {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 38px;
+        }
+
+        .zoom-author {
+            background: #563A9C;
+            color: #F3EFDE;
+            border-radius: 18px;
+            padding: 10px 22px;
+            font-size: 24px;
+            font-weight: bold;
+            min-width: 150px;
+            text-align: center;
+        }
+
+        .zoom-info {
+            background: #A8A8A8;
+            color: #F3EFDE;
+            border-radius: 18px;
+            padding: 15px 20px;
+            font-size: 24px;
+            font-weight: bold;
+            width: 215px;
+            min-height: 62px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .zoom-right {
+            display: flex;
+            flex-direction: column;
+            min-height: 350px;
+        }
+
+        .zoom-description {
+            color: black;
+            font-family: Arial, sans-serif;
+            font-size: 21px;
+            line-height: 1.18;
+            white-space: pre-wrap;
+            max-height: 260px;
+            overflow-y: auto;
+            padding-right: 8px;
+            max-width: 650px;
+        }
+
+        .zoom-actions {
+            margin-top: auto;
+            display: flex;
+            justify-content: flex-end;
+            gap: 20px;
+        }
+
+        .zoom-actions form {
+            margin: 0;
+        }
+
+        .zoom-btn {
+            min-width: 190px;
+            height: 60px;
+            border: none;
+            border-radius: 18px;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 5px rgba(0,0,0,0.25);
+        }
+
+        .request-btn {
+            background: #C9BEFF;
+            color: #563A9C;
+        }
+
+        .edit-btn {
+            background: #563A9C;
+            color: #F3EFDE;
+        }
+
+        .back-btn {
+            background: #A8A8A8;
+            color: #F3EFDE;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar-custom">
+    <a th:href="@{/}" class="logo">SkillSwap</a>
+
+    <div class="nav-links">
+        <a th:href="@{/offers}" class="nav-link-custom">Browse offers</a>
+
+        <div class="menu-container">
+            <button class="hamburger-btn" type="button" onclick="toggleMenu()">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+
+            <div class="dropdown-menu-custom" id="dropdownMenu">
+                <a th:href="@{/}">Home</a>
+                <a th:href="@{/offers}">Browse offers</a>
+                <a th:href="@{/offers/create}">Add offer</a>
+                <a th:href="@{/profile}">My profile</a>
+                <a th:href="@{/lesson-requests}">Lesson requests</a>
+                <form th:action="@{/logout}" method="post" style="margin:0;">
+                    <button type="submit" class="logout-btn">
+                        Logout
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<main class="offer-zoom-page">
+
+    <section class="offer-zoom-overlay">
+
+        <a th:href="@{/offers}" class="zoom-close">×</a>
+
+        <div class="zoom-content">
+
+            <div class="zoom-left">
+                <div class="zoom-author" th:text="'@' + ${offer.owner.name}">
+                    @Maria P.
+                </div>
+
+                <div class="zoom-info" th:text="'Subject: ' + ${offer.title}">
+                    Subject: Math
+                </div>
+
+                <div class="zoom-info" th:text="'Credits: ' + ${offer.priceCredits}">
+                    Credits: 3
+                </div>
+            </div>
+
+            <div class="zoom-right">
+                <div class="zoom-description" th:text="${offer.description}">
+                    Offer description
+                </div>
+
+                <div class="zoom-actions">
+
+                    <a th:href="@{/offers}" class="zoom-btn back-btn">
+                        Go back
+                    </a>
+
+                    <a th:if="${isOwner}"
+                       th:href="@{/offers/edit/{id}(id=${offer.id})}"
+                       class="zoom-btn edit-btn">
+                        Edit
+                    </a>
+
+                    <form th:if="${!isOwner}"
+                          th:action="@{/offers/request/{id}(id=${offer.id})}"
+                          method="post"
+                          onsubmit="return confirm('Do you want to request this lesson?');">
+                        <a th:href="@{/offers/{id}/request(id=${offer.id})}"
+                            class="zoom-btn edit-btn">
+                            Request lesson
+                        </a>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<script>
+    function toggleMenu() {
+        document.getElementById("dropdownMenu").classList.toggle("show");
+    }
+
+    window.onclick = function(event) {
+        if (!event.target.closest(".menu-container")) {
+            const dropdown = document.getElementById("dropdownMenu");
+            if (dropdown && dropdown.classList.contains("show")) {
+                dropdown.classList.remove("show");
+            }
+        }
+    }
+</script>
+
+</body>
+</html>

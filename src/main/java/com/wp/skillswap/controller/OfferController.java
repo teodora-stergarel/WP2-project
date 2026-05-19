@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Controller
 public class OfferController {
@@ -30,10 +31,65 @@ public class OfferController {
     }
 
     @GetMapping("/offers")
-    public String showOffers(Model model) {
-        model.addAttribute("offers", offerRepository.findAll());
+    public String showOffers(@RequestParam(required = false) String search,
+                             @RequestParam(required = false) String subject,
+                             @RequestParam(required = false) Integer credits,
+                             Model model) {
+
+        List<Offer> offers;
+
+        boolean hasSearch = search != null && !search.trim().isEmpty();
+        boolean hasSubject = subject != null && !subject.trim().isEmpty() && !subject.equals("any");
+        boolean hasCredits = credits != null;
+
+        if (hasSubject && hasCredits) {
+            offers = offerRepository.findByTitleContainingIgnoreCaseAndPriceCredits(subject, credits);
+        } else if (hasSubject) {
+            offers = offerRepository.findByTitleContainingIgnoreCase(subject);
+        } else if (hasCredits) {
+            offers = offerRepository.findByPriceCredits(credits);
+        } else if (hasSearch) {
+            offers = offerRepository.findByTitleContainingIgnoreCaseOrDescriptionContainingIgnoreCase(search, search);
+        } else {
+            offers = offerRepository.findAll();
+        }
+
+        if (hasSearch && (hasSubject || hasCredits)) {
+            offers = offers.stream()
+                    .filter(offer ->
+                            offer.getTitle().toLowerCase().contains(search.toLowerCase()) ||
+                            offer.getDescription().toLowerCase().contains(search.toLowerCase()))
+                    .toList();
+        }
+
+        model.addAttribute("offers", offers);
+        model.addAttribute("search", search);
+        model.addAttribute("subject", subject);
+        model.addAttribute("credits", credits);
+
         return "offers";
     }
+
+    @GetMapping("/offers/{id}")
+public String showOfferDetails(@PathVariable Long id, Model model, Principal principal) {
+    Offer offer = offerRepository.findById(id).orElse(null);
+
+    if (offer == null) {
+        return "redirect:/offers?error=notfound";
+    }
+
+    boolean isOwner = false;
+
+    if (principal != null) {
+        User currentUser = userService.getAuthenticatedUser(principal);
+        isOwner = offer.getOwner().getId().equals(currentUser.getId());
+    }
+
+    model.addAttribute("offer", offer);
+    model.addAttribute("isOwner", isOwner);
+
+    return "offer-details";
+}
 
     @GetMapping("/offers/create")
     public String showCreateOfferPage(Model model) {
@@ -96,4 +152,58 @@ public class OfferController {
 
         return "redirect:/lesson-requests?success=requested";
     }
+
+    @GetMapping("/offers/edit/{id}")
+public String showEditOfferPage(@PathVariable Long id, Model model, Principal principal) {
+    User user = userService.getAuthenticatedUser(principal);
+    Offer offer = offerRepository.findById(id).orElse(null);
+
+    if (offer == null) {
+        return "redirect:/profile?error=notfound";
+    }
+
+    if (!offer.getOwner().getId().equals(user.getId())) {
+        return "redirect:/profile?error=forbidden";
+    }
+
+    model.addAttribute("offer", offer);
+    return "edit-offer";
+}
+
+@PostMapping("/offers/edit/{id}")
+public String editOffer(@PathVariable Long id,
+                        @RequestParam String title,
+                        @RequestParam Integer priceCredits,
+                        @RequestParam String description,
+                        Principal principal) {
+    User user = userService.getAuthenticatedUser(principal);
+    Offer offer = offerRepository.findById(id).orElse(null);
+
+    if (offer == null) {
+        return "redirect:/profile?error=notfound";
+    }
+
+    if (!offer.getOwner().getId().equals(user.getId())) {
+        return "redirect:/profile?error=forbidden";
+    }
+
+    offer.setTitle(title);
+    offer.setPriceCredits(priceCredits);
+    offer.setDescription(description);
+
+    offerRepository.save(offer);
+
+    return "redirect:/profile?success=offerUpdated";
+}
+
+@GetMapping("/offers/{id}/request")
+public String requestLessonPage(@PathVariable Long id, Model model) {
+
+    Offer offer = offerRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Offer not found"));
+
+    model.addAttribute("offer", offer);
+
+    return "request-lesson";
+}
 }
