@@ -142,6 +142,10 @@ public String showOfferDetails(@PathVariable Long id, Model model, Principal pri
             return "redirect:/offers?error=ownoffer";
         }
 
+        if (requester.getCreditsBalance() < offer.getPriceCredits()) {
+            return "redirect:/offers?error=notenoughcredits";
+        }
+
         LessonRequest lessonRequest = new LessonRequest();
         lessonRequest.setOffer(offer);
         lessonRequest.setRequester(requester);
