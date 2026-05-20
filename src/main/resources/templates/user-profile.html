@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${profileUser.name} + ' - SkillSwap'">Profile</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .cover-area {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #7c3aed, #c026d3);
+        }
+
+        .cover-area img.cover-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-pic-wrapper {
+            position: absolute;
+            bottom: -55px;
+            left: 40px;
+            z-index: 10;
+        }
+
+        .profile-pic-wrapper img,
+        .profile-pic-placeholder {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 5px solid #F3EFDE;
+            object-fit: cover;
+            background-color: #563A9C;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: white;
+            font-family: Georgia, serif;
+        }
+
+        .profile-info {
+            padding: 70px 40px 20px 200px;
+        }
+
+        .user-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #563A9C;
+            margin-bottom: 4px;
+        }
+
+        .user-email {
+            font-size: 1rem;
+            color: #563A9C;
+            margin-bottom: 8px;
+        }
+
+        .user-bio {
+            font-size: 1rem;
+            color: #563A9C;
+            font-style: italic;
+        }
+
+        .offers-section {
+            padding: 32px 40px;
+        }
+
+        .offers-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #563A9C;
+            margin-bottom: 24px;
+        }
+
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .offer-card {
+            border: 4px solid #563A9C;
+            border-radius: 18px;
+            padding: 16px;
+            background-color: #F3EFDE;
+            min-height: 180px;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.15s ease;
+        }
+
+        .offer-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .category-pill {
+            background-color: #C9BEFF;
+            color: #563A9C;
+            border-radius: 18px;
+            padding: 4px 22px;
+            display: inline-block;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .offer-description {
+            font-size: 0.85rem;
+            color: #563A9C;
+            margin-top: 8px;
+        }
+
+        .author-pill {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            background-color: #563A9C;
+            color: white;
+            border-radius: 16px;
+            padding: 5px 12px;
+            font-size: 13px;
+            text-decoration: none;
+        }
+
+        .no-offers {
+            color: #563A9C;
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar-custom">
+    <a th:href="@{/}" class="logo">SkillSwap</a>
+    <div class="nav-links">
+        <a th:href="@{/offers}" class="nav-link-custom">Browse offers</a>
+        <div class="menu-container">
+            <button class="hamburger-btn" type="button" onclick="toggleMenu()">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            <div class="dropdown-menu-custom" id="dropdownMenu">
+                <a th:href="@{/}">Home</a>
+                <a th:href="@{/offers}">Browse offers</a>
+                <a th:href="@{/offers/create}">Add offer</a>
+                <a th:href="@{/profile}">My profile</a>
+                <th:block th:if="${isAdmin}">
+                    <a th:href="@{/admin}">Admin Panel</a>
+                </th:block>
+                <form th:action="@{/logout}" method="post" style="margin:0;">
+                    <button type="submit" class="logout-btn">Logout</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- COVER + POZA PROFIL -->
+<div style="position: relative;">
+    <div class="cover-area">
+        <img th:if="${profileUser.coverImagePath != null}"
+             th:src="${profileUser.coverImagePath}"
+             class="cover-img" alt="Cover">
+    </div>
+    <div class="profile-pic-wrapper">
+        <img th:if="${profileUser.profileImagePath != null}"
+             th:src="${profileUser.profileImagePath}" alt="Profile">
+        <div th:unless="${profileUser.profileImagePath != null}"
+             class="profile-pic-placeholder">U</div>
+    </div>
+</div>
+
+<!-- INFO -->
+<div class="profile-info">
+    <div class="user-name" th:text="${profileUser.name}">Name</div>
+    <div class="user-email" th:text="${profileUser.email}">Email</div>
+    <div th:if="${profileUser.bio != null and !#strings.isEmpty(profileUser.bio)}"
+         class="user-bio" th:text="${profileUser.bio}">Bio</div>
+</div>
+
+<!-- OFERTE -->
+<div class="offers-section">
+    <div class="offers-title">Active offers:</div>
+
+    <div th:if="${#lists.isEmpty(userOffers)}" class="no-offers">
+        This user has no offers yet.
+    </div>
+
+    <div class="offers-grid" th:unless="${#lists.isEmpty(userOffers)}">
+        <div th:each="offer : ${userOffers}" style="position: relative;">
+            <a th:href="@{/offers/{id}(id=${offer.id})}"
+               style="text-decoration: none; color: inherit; display: block;">
+                <div class="offer-card">
+                    <div class="category-pill" th:text="${offer.title}">Title</div>
+                    <p class="offer-description"
+                       th:text="${#strings.abbreviate(offer.description, 120)}">Description</p>
+                </div>
+            </a>
+
+            <a th:href="@{/profile/{id}(id=${profileUser.id})}"
+               class="author-pill"
+               th:text="'@' + ${profileUser.name}">
+                @User
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleMenu() {
+        document.getElementById("dropdownMenu").classList.toggle("show");
+    }
+
+    window.onclick = function(event) {
+        if (!event.target.closest(".menu-container")) {
+            const dropdown = document.getElementById("dropdownMenu");
+            if (dropdown && dropdown.classList.contains("show")) {
+                dropdown.classList.remove("show");
+            }
+        }
+    }
+</script>
+
+</body>
+</html>

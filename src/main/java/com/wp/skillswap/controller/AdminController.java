@@ -50,8 +50,50 @@ public class AdminController {
     public String adminAccounts(Model model, Principal principal) {
         model.addAttribute("users", userRepository.findAll());
         model.addAttribute("currentAdminEmail", principal.getName());
-
         return "admin-accounts";
+    }
+
+    @GetMapping("/admin/accounts/{id}")
+    public String adminViewUserProfile(@PathVariable Long id, Model model) {
+        User profileUser = userRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid user id: " + id));
+
+        List<Offer> userOffers = offerRepository.findByOwner(profileUser);
+
+        model.addAttribute("profileUser", profileUser);
+        model.addAttribute("userOffers", userOffers);
+
+        return "admin-user-profile";
+    }
+
+    @PostMapping("/admin/accounts/penalty/{id}")
+    public String addPenalty(@PathVariable Long id, Principal principal) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid user id: " + id));
+
+        if (user.getEmail().equals(principal.getName()) || user.getRole().name().equals("ADMIN")) {
+            return "redirect:/admin/accounts";
+        }
+
+        user.setPenalties(user.getPenalties() + 1);
+
+        if (user.getPenalties() >= 3) {
+            user.setBanned(true);
+        }
+
+        userRepository.save(user);
+        return "redirect:/admin/accounts/" + id;
+    }
+
+    @PostMapping("/admin/accounts/unban/{id}")
+    public String unbanUser(@PathVariable Long id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid user id: " + id));
+
+        user.setBanned(false);
+        user.setPenalties(0);
+        userRepository.save(user);
+        return "redirect:/admin/accounts/" + id;
     }
 
     @PostMapping("/admin/accounts/delete/{id}")
@@ -60,39 +102,17 @@ public class AdminController {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid user id: " + id));
 
-        if (user.getEmail().equals(principal.getName())) {
-            return "redirect:/admin/accounts";
-        }
-
-        if (user.getRole().name().equals("ADMIN")) {
+        if (user.getEmail().equals(principal.getName()) || user.getRole().name().equals("ADMIN")) {
             return "redirect:/admin/accounts";
         }
 
         List<Offer> userOffers = offerRepository.findByOwner(user);
-
         lessonRequestRepository.deleteByRequester(user);
-
         for (Offer offer : userOffers) {
             lessonRequestRepository.deleteByOffer(offer);
         }
-
         offerRepository.deleteAll(userOffers);
         userRepository.delete(user);
-
-        return "redirect:/admin/accounts";
-    }
-
-    @GetMapping("/admin/users/report/{id}")
-    public String reportUser(@PathVariable Long id) {
-        User user = userRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid user id: " + id));
-
-        if (user.getPenalties() == null) {
-            user.setPenalties(0);
-        }
-
-        user.setPenalties(user.getPenalties() + 1);
-        userRepository.save(user);
 
         return "redirect:/admin/accounts";
     }
@@ -100,7 +120,6 @@ public class AdminController {
     @GetMapping("/admin/offers")
     public String adminOffers(Model model) {
         model.addAttribute("offers", offerRepository.findAll());
-
         return "admin-offers";
     }
 
@@ -108,21 +127,17 @@ public class AdminController {
     public String adminOfferDetails(@PathVariable Long id, Model model) {
         Offer offer = offerRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid offer id: " + id));
-
         model.addAttribute("offer", offer);
-
         return "admin-offer-details";
     }
 
-    @GetMapping("/admin/offers/delete/{id}")
+    @PostMapping("/admin/offers/delete/{id}")
     @Transactional
     public String deleteOffer(@PathVariable Long id) {
         Offer offer = offerRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid offer id: " + id));
-
         lessonRequestRepository.deleteByOffer(offer);
         offerRepository.delete(offer);
-
         return "redirect:/admin/offers";
     }
 }

@@ -3,130 +3,325 @@
 <head>
     <meta charset="UTF-8">
     <title>My Profile</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .cover-area {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #7c3aed, #c026d3);
+        }
+
+        .cover-area img.cover-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-pic-wrapper {
+            position: absolute;
+            bottom: -55px;
+            left: 40px;
+            z-index: 10;
+        }
+
+        .profile-pic-wrapper img,
+        .profile-pic-placeholder {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 5px solid #F3EFDE;
+            object-fit: cover;
+            background-color: #563A9C;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: white;
+            font-family: Georgia, serif;
+        }
+
+        .profile-body {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 32px;
+            padding: 70px 40px 40px 40px;
+        }
+
+        .user-name {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #563A9C;
+            margin-bottom: 4px;
+        }
+
+        .user-credits {
+            font-size: 1.1rem;
+            color: #563A9C;
+            margin-bottom: 24px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #563A9C;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .offer-card {
+            border: 4px solid #563A9C;
+            border-radius: 20px;
+            padding: 20px;
+            background-color: #F3EFDE;
+            min-height: 180px;
+            position: relative;
+        }
+
+        .offer-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .offer-nav button {
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: #563A9C;
+            cursor: pointer;
+            font-family: Georgia, serif;
+        }
+
+        .edit-btn {
+            background-color: #F3EFDE;
+            border: 3px solid #563A9C;
+            border-radius: 14px;
+            color: #563A9C;
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 6px 24px;
+            cursor: pointer;
+            font-family: Georgia, serif;
+        }
+
+        .requests-box {
+            border: 4px solid #563A9C;
+            border-radius: 20px;
+            padding: 20px;
+            background-color: #F3EFDE;
+            max-height: 420px;
+            overflow-y: auto;
+        }
+
+        .request-item {
+            border-top: 1px solid rgba(86,58,156,0.2);
+            padding: 12px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .request-item:first-child {
+            border-top: none;
+        }
+
+        .request-text {
+            font-size: 0.9rem;
+            color: #563A9C;
+            flex: 1;
+        }
+
+        .request-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .btn-accept {
+            background-color: #22c55e;
+            border: none;
+            border-radius: 50%;
+            width: 38px;
+            height: 38px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: white;
+        }
+
+        .btn-reject {
+            background-color: #ef4444;
+            border: none;
+            border-radius: 50%;
+            width: 38px;
+            height: 38px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: white;
+        }
+
+        .category-pill {
+            background-color: #C9BEFF;
+            color: #563A9C;
+            border-radius: 18px;
+            padding: 4px 22px;
+            display: inline-block;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .author-pill {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            background-color: #563A9C;
+            color: white;
+            border-radius: 16px;
+            padding: 5px 12px;
+            font-size: 13px;
+        }
+
+        .no-offers {
+            text-align: center;
+            color: #563A9C;
+            font-style: italic;
+            padding: 20px;
+        }
+    </style>
 </head>
-<body class="bg-light">
+<body>
 
-<div class="container mt-5 mb-5">
-    <div class="row justify-content-center">
-        <div class="col-md-8 col-lg-6">
-            <div class="card shadow-lg border-0 rounded-4">
-                <div class="card-body p-4">
-
-                    <div class="text-center mb-4">
-                        <img th:if="${user.profileImagePath != null}"
-                             th:src="${user.profileImagePath}"
-                             alt="Profile Image"
-                             class="rounded-circle border shadow-sm"
-                             style="width: 120px; height: 120px; object-fit: cover;">
-
-                        <div th:if="${user.profileImagePath == null}"
-                             class="rounded-circle bg-primary text-white d-inline-flex justify-content-center align-items-center shadow-sm"
-                             style="width: 120px; height: 120px; font-size: 42px;">
-                            U
-                        </div>
-                    </div>
-
-                    <h2 class="text-center mb-4">My Profile</h2>
-
-                    <div th:if="${param.success}" class="alert alert-success">
-                        Bio updated successfully.
-                    </div>
-
-                    <div th:if="${param.imageSuccess}" class="alert alert-success">
-                        Profile picture updated successfully.
-                    </div>
-
-                    <h5 class="mb-3">Account Information</h5>
-
-                    <div class="mb-3">
-                        <label class="form-label fw-bold">Name</label>
-                        <div class="form-control bg-white" th:text="${user.name}"></div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label fw-bold">Email</label>
-                        <div class="form-control bg-white" th:text="${user.email}"></div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label fw-bold">Role</label><br>
-                        <span class="badge bg-dark px-3 py-2" th:text="${user.role}"></span>
-                    </div>
-
-                    <div class="mb-4">
-                        <label class="form-label fw-bold">Credits</label><br>
-                        <span class="badge bg-success fs-6 px-3 py-2" th:text="${user.creditsBalance} + ' credits'"></span>
-                    </div>
-
-                    <hr class="my-4">
-
-                    <h5 class="mb-3">Change Profile Picture</h5>
-
-                    <form th:action="@{/profile/upload-image}" method="post" enctype="multipart/form-data">
-                        <div class="mb-3">
-                            <label for="image" class="form-label">Select a new profile picture</label>
-                            <input id="image" type="file" name="image" class="form-control" accept="image/*">
-                        </div>
-                        <div class="d-grid mb-4">
-                            <button type="submit" class="btn btn-outline-secondary">Change Profile Picture</button>
-                        </div>
-                    </form>
-
-                    <hr class="my-4">
-
-                    <h5 class="mb-3">Update Bio</h5>
-
-                    <form th:action="@{/profile/update-bio}" method="post">
-                        <div class="mb-3">
-                            <label for="bio" class="form-label fw-bold">Bio</label>
-                            <textarea
-                                    id="bio"
-                                    name="bio"
-                                    class="form-control"
-                                    rows="4"
-                                    placeholder="Write something about yourself..."
-                                    th:text="${user.bio}"></textarea>
-                        </div>
-
-                        <div class="d-grid">
-                            <button type="submit" class="btn btn-primary">Update Bio</button>
-                        </div>
-                    </form>
-
-                    <div class="mt-4">
-                        <h5>Current Bio</h5>
-                        <div class="p-3 bg-white border rounded"
-                             th:text="${user.bio != null and !#strings.isEmpty(user.bio) ? user.bio : 'No bio added yet.'}">
-                        </div>
-                    </div>
-
-                    <hr class="my-4">
-
-                    <!-- 🔥 BUTOANE NAVIGARE -->
-                    <div class="d-grid gap-2">
-                        <a th:href="@{/offers}" class="btn btn-outline-primary">View Offers</a>
-                        <a th:href="@{/offers/create}" class="btn btn-outline-success">Create Offer</a>
-
-                        <!-- 🔥 ADMIN DOAR PENTRU ADMIN -->
-                        <a th:href="@{/admin}"
-                           class="btn btn-outline-dark"
-                           th:if="${isAdmin}">
-                            Admin Panel
-                        </a>
-
-                        <form th:action="@{/logout}" method="post" style="margin:0;">
-                            <button type="submit" class="logout-btn">
-                                Logout
-                            </button>
-                        </form>
-                    </div>
-
-                </div>
+<!-- NAVBAR -->
+<nav class="navbar-custom">
+    <a th:href="@{/}" class="logo">SkillSwap</a>
+    <div class="nav-links">
+        <a th:href="@{/profile/edit}" class="nav-button" th:unless="${isAdmin}">Edit Profile</a>
+        <a th:href="@{/admin}" class="nav-button" th:if="${isAdmin}">Admin Panel</a>
+        <div class="menu-container">
+            <button class="hamburger-btn" type="button" onclick="toggleMenu()">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            <div class="dropdown-menu-custom" id="dropdownMenu">
+                <a th:href="@{/}">Home</a>
+                <a th:href="@{/offers}">Browse offers</a>
+                <a th:href="@{/offers/create}">Add offer</a>
+                <a th:href="@{/profile}">My profile</a>
+                <form th:action="@{/logout}" method="post" style="margin:0;">
+                    <button type="submit" class="logout-btn">Logout</button>
+                </form>
             </div>
         </div>
     </div>
+</nav>
+
+<!-- COVER + POZA PROFIL -->
+<div style="position: relative;">
+    <div class="cover-area">
+        <img th:if="${user.coverImagePath != null}"
+             th:src="${user.coverImagePath}"
+             class="cover-img" alt="Cover">
+    </div>
+    <div class="profile-pic-wrapper">
+        <img th:if="${user.profileImagePath != null}"
+             th:src="${user.profileImagePath}" alt="Profile">
+        <div th:unless="${user.profileImagePath != null}"
+             class="profile-pic-placeholder">U</div>
+    </div>
 </div>
+
+<!-- BODY -->
+<div class="profile-body">
+
+    <!-- STANGA -->
+    <div class="profile-left">
+        <div class="user-name" th:text="${user.name}">Name</div>
+        <div class="user-credits" th:text="${user.creditsBalance} + ' credits available'">0 credits</div>
+
+        <div class="section-title">My offers:</div>
+
+        <div th:if="${!#lists.isEmpty(myOffers)}">
+            <div th:each="offer, iterStat : ${myOffers}"
+                 th:if="${iterStat.index == currentOfferIndex}"
+                 class="offer-card">
+                <div class="category-pill" th:text="${offer.title}">Title</div>
+                <p th:text="${offer.description}">Description</p>
+                <span class="author-pill" th:text="'@' + ${user.name}">@User</span>
+            </div>
+
+            <div class="offer-nav">
+                <form th:action="@{/profile}" method="get">
+                    <input type="hidden" name="offerIndex"
+                           th:value="${currentOfferIndex > 0 ? currentOfferIndex - 1 : 0}">
+                    <button type="submit">◀</button>
+                </form>
+
+                <button class="edit-btn"
+                        th:onclick="'window.location.href=\'/offers/edit/\' + ' + ${myOffers[currentOfferIndex].id}">
+                    Edit
+                </button>
+
+                <form th:action="@{/profile}" method="get">
+                    <input type="hidden" name="offerIndex"
+                           th:value="${currentOfferIndex < myOffers.size() - 1 ? currentOfferIndex + 1 : currentOfferIndex}">
+                    <button type="submit">▶</button>
+                </form>
+            </div>
+        </div>
+
+        <div th:if="${#lists.isEmpty(myOffers)}" class="offer-card">
+            <div class="no-offers">You have no offers yet.</div>
+        </div>
+    </div>
+
+    <!-- DREAPTA — REQUESTS -->
+    <div>
+        <div class="section-title">Requests</div>
+        <div class="requests-box">
+
+            <div th:if="${#lists.isEmpty(incomingRequests)}"
+                 class="no-offers">No requests yet.</div>
+
+            <div th:each="req : ${incomingRequests}" class="request-item">
+                <div class="request-text">
+                    <strong th:text="${req.requester.name}">Name</strong> wants:
+                    <span th:text="${req.offer.title}">Offer</span><br>
+                    <small th:text="${#temporals.format(req.createdAt, 'dd MMM yyyy, HH:mm')}">date</small><br>
+                    <small>Status: <strong th:text="${req.status}">PENDING</strong></small>
+                </div>
+                <div class="request-actions" th:if="${req.status.name() == 'PENDING'}">
+                    <form th:action="@{/profile/requests/accept/{id}(id=${req.id})}" method="post">
+                        <button type="submit" class="btn-accept">✓</button>
+                    </form>
+                    <form th:action="@{/profile/requests/reject/{id}(id=${req.id})}" method="post">
+                        <button type="submit" class="btn-reject">✕</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<script>
+    function toggleMenu() {
+        document.getElementById("dropdownMenu").classList.toggle("show");
+    }
+
+    window.onclick = function(event) {
+        if (!event.target.closest(".menu-container")) {
+            const dropdown = document.getElementById("dropdownMenu");
+            if (dropdown && dropdown.classList.contains("show")) {
+                dropdown.classList.remove("show");
+            }
+        }
+    }
+</script>
 
 </body>
 </html>

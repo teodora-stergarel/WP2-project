@@ -67,6 +67,12 @@
             font-weight: bold;
             min-width: 150px;
             text-align: center;
+            text-decoration: none;
+            display: block;
+        }
+
+        .zoom-author:hover {
+            background: #432d7a;
         }
 
         .zoom-info {
@@ -109,9 +115,7 @@
             gap: 20px;
         }
 
-        .zoom-actions form {
-            margin: 0;
-        }
+        .zoom-actions form { margin: 0; }
 
         .zoom-btn {
             min-width: 190px;
@@ -129,20 +133,9 @@
             box-shadow: 0 4px 5px rgba(0,0,0,0.25);
         }
 
-        .request-btn {
-            background: #C9BEFF;
-            color: #563A9C;
-        }
-
-        .edit-btn {
-            background: #563A9C;
-            color: #F3EFDE;
-        }
-
-        .back-btn {
-            background: #A8A8A8;
-            color: #F3EFDE;
-        }
+        .request-btn { background: #C9BEFF; color: #563A9C; }
+        .edit-btn { background: #563A9C; color: #F3EFDE; }
+        .back-btn { background: #A8A8A8; color: #F3EFDE; }
     </style>
 </head>
 
@@ -168,9 +161,7 @@
                 <a th:href="@{/profile}">My profile</a>
                 <a th:href="@{/lesson-requests}">Lesson requests</a>
                 <form th:action="@{/logout}" method="post" style="margin:0;">
-                    <button type="submit" class="logout-btn">
-                        Logout
-                    </button>
+                    <button type="submit" class="logout-btn">Logout</button>
                 </form>
             </div>
         </div>
@@ -186,9 +177,11 @@
         <div class="zoom-content">
 
             <div class="zoom-left">
-                <div class="zoom-author" th:text="'@' + ${offer.owner.name}">
+                <a th:href="@{/profile/{id}(id=${offer.owner.id})}"
+                   class="zoom-author"
+                   th:text="'@' + ${offer.owner.name}">
                     @Maria P.
-                </div>
+                </a>
 
                 <div class="zoom-info" th:text="'Subject: ' + ${offer.title}">
                     Subject: Math
@@ -205,10 +198,7 @@
                 </div>
 
                 <div class="zoom-actions">
-
-                    <a th:href="@{/offers}" class="zoom-btn back-btn">
-                        Go back
-                    </a>
+                    <a th:href="@{/offers}" class="zoom-btn back-btn">Go back</a>
 
                     <a th:if="${isOwner}"
                        th:href="@{/offers/edit/{id}(id=${offer.id})}"
@@ -220,12 +210,10 @@
                           th:action="@{/offers/request/{id}(id=${offer.id})}"
                           method="post"
                           onsubmit="return confirm('Do you want to request this lesson?');">
-                        <a th:href="@{/offers/{id}/request(id=${offer.id})}"
-                            class="zoom-btn edit-btn">
+                        <button type="submit" class="zoom-btn request-btn">
                             Request lesson
-                        </a>
+                        </button>
                     </form>
-
                 </div>
             </div>
 

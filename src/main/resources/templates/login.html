@@ -12,132 +12,103 @@
     <a th:href="@{/}" class="logo">SkillSwap</a>
 
     <div class="nav-links">
-
-        <a th:href="@{/offers}" class="nav-link-custom">
-            Browse offers
-        </a>
+        <a th:href="@{/offers}" class="nav-link-custom">Browse offers</a>
 
         <div class="menu-container">
-
-            <button class="hamburger-btn"
-                    type="button"
-                    onclick="toggleMenu()">
-
+            <button class="hamburger-btn" type="button" onclick="toggleMenu()">
                 <span class="hamburger-line"></span>
                 <span class="hamburger-line"></span>
                 <span class="hamburger-line"></span>
-
             </button>
 
             <div class="dropdown-menu-custom" id="dropdownMenu">
-
                 <a th:href="@{/}">Home</a>
                 <a th:href="@{/offers}">Browse offers</a>
                 <a th:href="@{/register}">Sign Up</a>
-
             </div>
-
         </div>
-
     </div>
 </nav>
 
-<main class="page-container"
-      style="
+<main class="page-container" style="
       display:flex;
       justify-content:center;
       align-items:center;
-      min-height: calc(100vh - 86px);
-      ">
+      min-height: calc(100vh - 86px);">
 
-    <section class="purple-card"
-             style="
-             width:700px;
-             padding:60px;
-             ">
+    <section class="purple-card" style="width:700px; padding:60px;">
 
         <h1 style="
             text-align:center;
             font-size:70px;
             margin-top:0;
-            margin-bottom:60px;
-        ">
+            margin-bottom:60px;">
             Welcome back!
         </h1>
 
         <form th:action="@{/login}" method="post">
 
             <div style="margin-bottom:35px;">
-
                 <label style="
                     display:block;
                     font-size:30px;
                     font-weight:bold;
-                    margin-bottom:10px;
-                ">
+                    margin-bottom:10px;">
                     Email
                 </label>
-
-                <input type="email"
-                       name="username"
-                       class="gray-input"
-                       required>
-
+                <input type="email" name="username" class="gray-input" required>
             </div>
 
             <div style="margin-bottom:60px;">
-
                 <label style="
                     display:block;
                     font-size:30px;
                     font-weight:bold;
-                    margin-bottom:10px;
-                ">
+                    margin-bottom:10px;">
                     Password
                 </label>
-
-                <input type="password"
-                       name="password"
-                       class="gray-input"
-                       required>
-
+                <input type="password" name="password" class="gray-input" required>
             </div>
 
-            <button type="submit"
-                    class="purple-btn"
-                    style="
+            <button type="submit" class="purple-btn" style="
                     width:100%;
                     padding:18px;
-                    font-size:28px;
-                    ">
+                    font-size:28px;">
                 Log in
             </button>
 
         </form>
 
-        <p style="
-            text-align:center;
-            margin-top:25px;
-            font-size:20px;
-        ">
-            Don’t have an account?
-
-            <a th:href="@{/register}"
-               style="
-               color:#563A9C;
-               font-weight:bold;
-               ">
-                Sign up
-            </a>
+        <p style="text-align:center; margin-top:25px; font-size:20px;">
+            Don't have an account?
+            <a th:href="@{/register}" style="color:#563A9C; font-weight:bold;">Sign up</a>
         </p>
 
-        <p th:if="${param.error}"
-           style="
+        <!-- Mesaj eroare login normal -->
+        <p th:if="${param.error}" style="
            color:red;
            text-align:center;
            font-weight:bold;
-           ">
+           margin-top:20px;">
             Invalid email or password.
+        </p>
+
+        <!-- Mesaj cont banat -->
+        <p th:if="${param.banned}" style="
+           color:red;
+           text-align:center;
+           font-weight:bold;
+           margin-top:20px;">
+            Your account has been banned. Please contact an administrator.
+        </p>
+
+        <!-- Mesaj logout -->
+        <p th:if="${param.logout}" style="
+           color:green;
+           text-align:center;
+           font-weight:bold;
+           margin-top:20px;">
+            You have been logged out successfully.
         </p>
 
     </section>
