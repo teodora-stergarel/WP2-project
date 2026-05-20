@@ -1017,3 +1017,9 @@ WARNING: Unmatched cancel notification for request id 16
 2026.05.21 02:47:45 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
 2026.05.21 02:47:45 WARN  no build target for: /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java
 2026.05.21 02:47:46 INFO  no build target found for /Users/teodora/WP2-project/src/main/java/com/wp/skillswap/controller/OfferController.java. Using fallback presentation compiler.
+2026.05.21 02:52:05 INFO  no build target found for /Users/teodora/WP2-project/src/main/config/WebConfig.java. Using fallback presentation compiler.
+2026.05.21 02:53:02 INFO  Shutting down server
+2026.05.21 02:53:02 INFO  Memory monitor stopped
+2026.05.21 02:53:02 INFO  shutting down Metals
+2026.05.21 02:53:02 INFO  Shut down connection with build server.
+2026.05.21 02:53:02 INFO  Exiting server
