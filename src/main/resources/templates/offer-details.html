@@ -199,6 +199,19 @@
                     Offer description
                 </div>
 
+            <div th:if="${offer.attachmentPath != null}"
+                style="margin-top:20px;">
+                <a th:href="@{${offer.attachmentPath}}"
+                target="_blank"
+                style="
+                    color:#563A9C;
+                    font-size:22px;
+                    font-weight:bold;
+                ">
+                    View attachment
+                </a>
+            </div>
+
                 <div class="zoom-actions">
                     <a th:href="@{/offers}" class="zoom-btn back-btn">Go back</a>
 
