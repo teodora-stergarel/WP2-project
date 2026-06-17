@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Accounts</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .topbar {
+            background: linear-gradient(90deg, #6a00b9, #7a00c9);
+            color: white;
+            padding: 18px 28px;
+            border-radius: 0 0 18px 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .topbar-title {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .topbar-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .admin-badge {
+            background-color: #d8b4fe;
+            color: #5b21b6;
+            border-radius: 20px;
+            padding: 10px 18px;
+            font-weight: 600;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .main-content {
+            padding: 36px;
+        }
+
+        .page-title {
+            color: #5b00b5;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 28px;
+        }
+
+        .user-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 12px;
+        }
+
+        .user-table th {
+            color: #6a00b9;
+            font-size: 1rem;
+            font-weight: 700;
+            padding: 0 20px 8px 20px;
+            text-align: left;
+        }
+
+        .user-row td {
+            background-color: rgba(255,255,255,0.4);
+            padding: 16px 20px;
+            color: #5b00b5;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .user-row td:first-child { border-radius: 16px 0 0 16px; }
+        .user-row td:last-child { border-radius: 0 16px 16px 0; }
+
+        .banned-row td { background-color: rgba(255, 0, 0, 0.08); }
+
+        .badge-penalty {
+            background-color: #ffcc00;
+            color: #5b00b5;
+            border-radius: 12px;
+            padding: 4px 14px;
+            font-weight: 700;
+        }
+
+        .badge-banned {
+            background-color: #ff4444;
+            color: white;
+            border-radius: 12px;
+            padding: 4px 14px;
+            font-weight: 700;
+        }
+
+        .badge-ok {
+            background-color: #c9beff;
+            color: #5b00b5;
+            border-radius: 12px;
+            padding: 4px 14px;
+            font-weight: 700;
+        }
+
+        .badge-protected {
+            background-color: #e5e7eb;
+            color: #374151;
+            border-radius: 12px;
+            padding: 4px 14px;
+            font-weight: 700;
+        }
+
+        .action-btn {
+            border: none;
+            border-radius: 12px;
+            padding: 8px 16px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            font-family: Georgia, serif;
+        }
+
+        .btn-penalty { background-color: #ffcc00; color: #5b00b5; }
+        .btn-unban { background-color: #c9beff; color: #5b00b5; }
+        .btn-delete { background-color: #ff4444; color: white; }
+
+        .actions-cell {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="topbar">
+    <h1 class="topbar-title">Manage Accounts</h1>
+    <div class="topbar-right">
+        <a th:href="@{/admin}" class="admin-badge">← Dashboard</a>
+        <div class="menu-container">
+            <button class="hamburger-btn" type="button" onclick="toggleMenu()">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            <div class="dropdown-menu-custom" id="dropdownMenu">
+                <a th:href="@{/}">Home</a>
+                <a th:href="@{/profile}">My profile</a>
+                <a th:href="@{/admin}">Admin Dashboard</a>
+                <a th:href="@{/admin/accounts}">Manage accounts</a>
+                <a th:href="@{/admin/offers}">Manage offers</a>
+                <form th:action="@{/logout}" method="post" style="margin:0;">
+                    <button type="submit" class="logout-btn">Logout</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="main-content">
+    <div class="page-title">All Users</div>
+
+    <table class="user-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Credits</th>
+                <th>Penalties</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="user-row"
+                th:each="user : ${users}"
+                th:classappend="${user.banned} ? ' banned-row' : ''">
+
+               <td>
+    <a th:href="@{/admin/accounts/{id}(id=${user.id})}"
+       style="color: #5b00b5; font-weight: 700; text-decoration: none;"
+       th:text="${user.name}">Name</a>
+</td>
+                <td th:text="${user.email}">Email</td>
+                <td th:text="${user.creditsBalance}">0</td>
+                <td>
+                    <span class="badge-penalty" th:text="${user.penalties} + '/3'">0/3</span>
+                </td>
+                <td>
+                    <span th:if="${user.banned}" class="badge-banned">BANNED</span>
+                    <span th:if="${user.role.name() == 'ADMIN'}" class="badge-protected">ADMIN</span>
+                    <span th:if="${!user.banned and user.role.name() != 'ADMIN'}" class="badge-ok">Active</span>
+                </td>
+                <td>
+                    <div class="actions-cell">
+
+                        <!-- User protejat -->
+                        <span th:if="${user.role.name() == 'ADMIN' or user.email == currentAdminEmail}"
+                              class="badge-protected">Protected</span>
+
+                        <!-- Butoane pentru useri normali -->
+                        <th:block th:if="${user.role.name() != 'ADMIN' and user.email != currentAdminEmail}">
+
+                            <!-- Penalty — doar dacă nu e banat -->
+                            <form th:if="${!user.banned}"
+                                  th:action="@{/admin/accounts/penalty/{id}(id=${user.id})}"
+                                  method="post">
+                                <button type="submit" class="action-btn btn-penalty">+ Penalty</button>
+                            </form>
+
+                            <!-- Unban — doar dacă e banat -->
+                            <form th:if="${user.banned}"
+                                  th:action="@{/admin/accounts/unban/{id}(id=${user.id})}"
+                                  method="post">
+                                <button type="submit" class="action-btn btn-unban">Unban</button>
+                            </form>
+
+                            <!-- Delete — întotdeauna -->
+                            <form th:action="@{/admin/accounts/delete/{id}(id=${user.id})}"
+                                  method="post"
+                                  onsubmit="return confirm('Delete this user permanently?');">
+                                <button type="submit" class="action-btn btn-delete">Delete</button>
+                            </form>
+
+                        </th:block>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function toggleMenu() {
+        document.getElementById("dropdownMenu").classList.toggle("show");
+    }
+
+    window.onclick = function(event) {
+        if (!event.target.closest(".menu-container")) {
+            const dropdown = document.getElementById("dropdownMenu");
+            if (dropdown && dropdown.classList.contains("show")) {
+                dropdown.classList.remove("show");
+            }
+        }
+    }
+</script>
+
+</body>
+</html>

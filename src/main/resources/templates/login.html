@@ -1,39 +1,134 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
     <title>Login - SkillSwap</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
 
-<h1>Login</h1>
+<nav class="navbar-custom">
+    <a th:href="@{/}" class="logo">SkillSwap</a>
 
-<p th:if="${param.error}" style="color:red;">
-    Invalid email or password.
-</p>
+    <div class="nav-links">
+        <a th:href="@{/offers}" class="nav-link-custom">Browse offers</a>
 
-<p th:if="${param.logout}" style="color:green;">
-    You have been logged out.
-</p>
+        <div class="menu-container">
+            <button class="hamburger-btn" type="button" onclick="toggleMenu()">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
 
-<p th:if="${successMessage}" style="color:green;">
-    <span th:text="${successMessage}"></span>
-</p>
-
-<form th:action="@{/login}" method="post">
-    <div>
-        <label>Email:</label>
-        <input type="email" name="username">
+            <div class="dropdown-menu-custom" id="dropdownMenu">
+                <a th:href="@{/}">Home</a>
+                <a th:href="@{/offers}">Browse offers</a>
+                <a th:href="@{/register}">Sign Up</a>
+            </div>
+        </div>
     </div>
+</nav>
 
-    <div>
-        <label>Password:</label>
-        <input type="password" name="password">
-    </div>
+<main class="page-container" style="
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      min-height: calc(100vh - 86px);">
 
-    <button type="submit">Login</button>
-</form>
+    <section class="purple-card" style="width:700px; padding:60px;">
 
-<p><a th:href="@{/register}">Create an account</a></p>
+        <h1 style="
+            text-align:center;
+            font-size:70px;
+            margin-top:0;
+            margin-bottom:60px;">
+            Welcome back!
+        </h1>
+
+        <form th:action="@{/login}" method="post">
+
+            <div style="margin-bottom:35px;">
+                <label style="
+                    display:block;
+                    font-size:30px;
+                    font-weight:bold;
+                    margin-bottom:10px;">
+                    Email
+                </label>
+                <input type="email" name="username" class="gray-input" required>
+            </div>
+
+            <div style="margin-bottom:60px;">
+                <label style="
+                    display:block;
+                    font-size:30px;
+                    font-weight:bold;
+                    margin-bottom:10px;">
+                    Password
+                </label>
+                <input type="password" name="password" class="gray-input" required>
+            </div>
+
+            <button type="submit" class="purple-btn" style="
+                    width:100%;
+                    padding:18px;
+                    font-size:28px;">
+                Log in
+            </button>
+
+        </form>
+
+        <p style="text-align:center; margin-top:25px; font-size:20px;">
+            Don't have an account?
+            <a th:href="@{/register}" style="color:#563A9C; font-weight:bold;">Sign up</a>
+        </p>
+
+        <!-- Mesaj eroare login normal -->
+        <p th:if="${param.error}" style="
+           color:red;
+           text-align:center;
+           font-weight:bold;
+           margin-top:20px;">
+            Invalid email or password.
+        </p>
+
+        <!-- Mesaj cont banat -->
+        <p th:if="${param.banned}" style="
+           color:red;
+           text-align:center;
+           font-weight:bold;
+           margin-top:20px;">
+            Your account has been banned. Please contact an administrator.
+        </p>
+
+        <!-- Mesaj logout -->
+        <p th:if="${param.logout}" style="
+           color:green;
+           text-align:center;
+           font-weight:bold;
+           margin-top:20px;">
+            You have been logged out successfully.
+        </p>
+
+    </section>
+
+</main>
+
+<script>
+    function toggleMenu() {
+        document.getElementById("dropdownMenu").classList.toggle("show");
+    }
+
+    window.onclick = function(event) {
+        if (!event.target.closest(".menu-container")) {
+            const dropdown = document.getElementById("dropdownMenu");
+            if (dropdown && dropdown.classList.contains("show")) {
+                dropdown.classList.remove("show");
+            }
+        }
+    }
+</script>
 
 </body>
 </html>

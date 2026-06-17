@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Profile</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .page-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            padding: 40px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #563A9C;
+            margin-bottom: 32px;
+        }
+
+        .field-label {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #563A9C;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .field-input {
+            width: 100%;
+            background-color: #E8E4F3;
+            border: none;
+            border-radius: 14px;
+            padding: 14px 18px;
+            font-size: 1rem;
+            font-family: Georgia, serif;
+            color: #563A9C;
+            margin-bottom: 24px;
+            box-sizing: border-box;
+        }
+
+        .field-input:focus {
+            outline: 2px solid #563A9C;
+        }
+
+        .field-input[readonly] {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .field-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .offers-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .offers-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #563A9C;
+        }
+
+        .add-offer-btn {
+            background-color: #563A9C;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            font-size: 1.4rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+        .offers-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .offer-card-edit {
+            border: 3px solid #563A9C;
+            border-radius: 18px;
+            padding: 16px;
+            background-color: #F3EFDE;
+            position: relative;
+            min-height: 160px;
+        }
+
+        .offer-card-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+            justify-content: flex-end;
+        }
+
+        .btn-delete-offer {
+            background-color: #F3EFDE;
+            border: 2px solid #563A9C;
+            border-radius: 12px;
+            color: #563A9C;
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 5px 14px;
+            cursor: pointer;
+            font-family: Georgia, serif;
+        }
+
+        .btn-edit-offer {
+            background-color: #563A9C;
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 5px 14px;
+            cursor: pointer;
+            font-family: Georgia, serif;
+        }
+
+        /* DREAPTA */
+        .right-panel {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .cover-upload-area {
+            width: 100%;
+            height: 180px;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(135deg, #7c3aed, #c026d3);
+        }
+
+        .cover-upload-area img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-pic-area {
+            position: relative;
+            margin-top: -60px;
+        }
+
+        .profile-pic-area img,
+        .profile-pic-placeholder {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 5px solid #F3EFDE;
+            object-fit: cover;
+            background-color: #563A9C;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: white;
+            font-family: Georgia, serif;
+        }
+
+        .upload-label {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #563A9C;
+            cursor: pointer;
+            text-align: center;
+            margin-top: 8px;
+        }
+
+        .upload-label:hover {
+            text-decoration: underline;
+        }
+
+        .change-cover-label {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #563A9C;
+            cursor: pointer;
+            position: absolute;
+            bottom: 10px;
+            right: 16px;
+        }
+
+        .save-btn {
+            background-color: #563A9C;
+            color: white;
+            border: none;
+            border-radius: 16px;
+            padding: 14px 48px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: Georgia, serif;
+            margin-top: 16px;
+            width: 100%;
+        }
+
+        .save-btn:hover {
+            background-color: #432d7a;
+        }
+
+        .no-offers {
+            color: #563A9C;
+            font-style: italic;
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar-custom">
+    <a th:href="@{/}" class="logo">SkillSwap</a>
+    <div class="nav-links">
+        <div class="menu-container">
+            <button class="hamburger-btn" type="button" onclick="toggleMenu()">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            <div class="dropdown-menu-custom" id="dropdownMenu">
+                <a th:href="@{/}">Home</a>
+                <a th:href="@{/offers}">Browse offers</a>
+                <a th:href="@{/offers/create}">Add offer</a>
+                <a th:href="@{/profile}">My profile</a>
+                <form th:action="@{/logout}" method="post" style="margin:0;">
+                    <button type="submit" class="logout-btn">Logout</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="page-grid">
+
+    <!-- STANGA -->
+    <div>
+        <div class="section-title">Edit profile</div>
+
+        <!-- Nume -->
+        <form th:action="@{/profile/update-name}" method="post">
+            <label class="field-label">Name</label>
+            <input type="text"
+                   name="name"
+                   class="field-input"
+                   th:value="${user.name}"
+                   placeholder="Your full name">
+
+            <!-- Email readonly -->
+            <label class="field-label">E-mail</label>
+            <input type="email"
+                   class="field-input"
+                   th:value="${user.email}"
+                   readonly>
+
+            <!-- Bio / Studies -->
+            <label class="field-label">Studies (optional)</label>
+            <input type="text"
+                   name="bio"
+                   class="field-input"
+                   th:value="${user.bio}"
+                   placeholder="e.g. Computer Science, UBB">
+
+            <button type="submit" class="save-btn">Save changes</button>
+        </form>
+
+        <!-- Ofertele mele -->
+        <div class="offers-header" style="margin-top: 32px;">
+            <span class="offers-title">Your offers /</span>
+            <a th:href="@{/offers/create}" class="add-offer-btn">+</a>
+            <span class="offers-title">Add new offer</span>
+        </div>
+
+        <div class="offers-grid">
+            <div th:if="${#lists.isEmpty(myOffers)}" class="no-offers">
+                No offers yet.
+            </div>
+
+            <div th:each="offer : ${myOffers}" class="offer-card-edit">
+                <div class="category-pill" th:text="${offer.title}">Title</div>
+                <p style="font-size: 0.85rem; color: #563A9C; margin-top: 8px;"
+                   th:text="${#strings.abbreviate(offer.description, 80)}">Description</p>
+
+                <div class="offer-card-actions">
+                    <form th:action="@{/offers/delete/{id}(id=${offer.id})}"
+                          method="post"
+                          onsubmit="return confirm('Delete this offer?');">
+                        <button type="submit" class="btn-delete-offer">Delete Offer</button>
+                    </form>
+                    <a th:href="@{/offers/edit/{id}(id=${offer.id})}"
+                       class="btn-edit-offer">EDIT</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DREAPTA -->
+    <div class="right-panel">
+
+        <!-- Cover -->
+        <form th:action="@{/profile/upload-cover}" method="post"
+              enctype="multipart/form-data" style="width: 100%;">
+            <div class="cover-upload-area">
+                <img th:if="${user.coverImagePath != null}"
+                     th:src="${user.coverImagePath}" alt="Cover">
+                <label for="coverInput" class="change-cover-label">Change cover</label>
+            </div>
+            <input id="coverInput" type="file" name="cover"
+                   accept="image/*" style="display:none;"
+                   onchange="this.form.submit()">
+        </form>
+
+        <!-- Poza profil -->
+        <form th:action="@{/profile/upload-image}" method="post"
+              enctype="multipart/form-data"
+              style="display: flex; flex-direction: column; align-items: center;">
+            <div class="profile-pic-area">
+                <img th:if="${user.profileImagePath != null}"
+                     th:src="${user.profileImagePath}" alt="Profile">
+                <div th:unless="${user.profileImagePath != null}"
+                     class="profile-pic-placeholder">U</div>
+            </div>
+            <label for="imageInput" class="upload-label">Add a profile picture</label>
+            <input id="imageInput" type="file" name="image"
+                   accept="image/*" style="display:none;"
+                   onchange="this.form.submit()">
+        </form>
+
+    </div>
+</div>
+
+<script>
+    function toggleMenu() {
+        document.getElementById("dropdownMenu").classList.toggle("show");
+    }
+
+    window.onclick = function(event) {
+        if (!event.target.closest(".menu-container")) {
+            const dropdown = document.getElementById("dropdownMenu");
+            if (dropdown && dropdown.classList.contains("show")) {
+                dropdown.classList.remove("show");
+            }
+        }
+    }
+
+    document.getElementById("coverInput").addEventListener("change", function() {
+        if (this.files && this.files[0]) {
+            this.form.submit();
+        }
+    });
+
+    document.getElementById("imageInput").addEventListener("change", function() {
+        if (this.files && this.files[0]) {
+            this.form.submit();
+        }
+    });
+</script>
+
+</body>
+</html>

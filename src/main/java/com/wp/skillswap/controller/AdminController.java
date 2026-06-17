@@ -5,10 +5,12 @@ import com.wp.skillswap.model.User;
 import com.wp.skillswap.repository.LessonRequestRepository;
 import com.wp.skillswap.repository.OfferRepository;
 import com.wp.skillswap.repository.UserRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.security.Principal;
 import java.util.List;
@@ -30,35 +32,94 @@ public class AdminController {
 
     @GetMapping("/admin")
     public String adminDashboard(Model model, Principal principal) {
-
         List<User> users = userRepository.findAll();
         List<Offer> offers = offerRepository.findAll();
 
-        int userCount = users.size();
-        int offerCount = offers.size();
-
-        int newUsers = userCount;
-        int newOffers = offerCount;
-        int creditsSwapped = 0;
-
-        String topTeacher = users.isEmpty() ? "N/A" : users.get(0).getName();
-        String adminName = principal.getName();
-
-        model.addAttribute("adminName", adminName);
-        model.addAttribute("userCount", userCount);
-        model.addAttribute("offerCount", offerCount);
-        model.addAttribute("newUsers", newUsers);
-        model.addAttribute("newOffers", newOffers);
-        model.addAttribute("creditsSwapped", creditsSwapped);
-        model.addAttribute("topTeacher", topTeacher);
+        model.addAttribute("adminName", principal.getName());
+        model.addAttribute("userCount", users.size());
+        model.addAttribute("offerCount", offers.size());
+        model.addAttribute("newUsers", users.size());
+        model.addAttribute("newOffers", offers.size());
+        model.addAttribute("creditsSwapped", 0);
+        model.addAttribute("topTeacher", users.isEmpty() ? "N/A" : users.get(0).getName());
 
         return "admin";
     }
 
+    @GetMapping("/admin/accounts")
+    public String adminAccounts(Model model, Principal principal) {
+        model.addAttribute("users", userRepository.findAll());
+        model.addAttribute("currentAdminEmail", principal.getName());
+        return "admin-accounts";
+    }
+
+    @GetMapping("/admin/accounts/{id}")
+    public String adminViewUserProfile(@PathVariable Long id, Model model) {
+        User profileUser = userRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid user id: " + id));
+
+        List<Offer> userOffers = offerRepository.findByOwner(profileUser);
+
+        model.addAttribute("profileUser", profileUser);
+        model.addAttribute("userOffers", userOffers);
+
+        return "admin-user-profile";
+    }
+
+    @PostMapping("/admin/accounts/penalty/{id}")
+    public String addPenalty(@PathVariable Long id, Principal principal) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid user id: " + id));
+
+        if (user.getEmail().equals(principal.getName()) || user.getRole().name().equals("ADMIN")) {
+            return "redirect:/admin/accounts";
+        }
+
+        user.setPenalties(user.getPenalties() + 1);
+
+        if (user.getPenalties() >= 3) {
+            user.setBanned(true);
+        }
+
+        userRepository.save(user);
+        return "redirect:/admin/accounts/" + id;
+    }
+
+    @PostMapping("/admin/accounts/unban/{id}")
+    public String unbanUser(@PathVariable Long id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid user id: " + id));
+
+        user.setBanned(false);
+        user.setPenalties(0);
+        userRepository.save(user);
+        return "redirect:/admin/accounts/" + id;
+    }
+
+    @PostMapping("/admin/accounts/delete/{id}")
+    @Transactional
+    public String deleteUser(@PathVariable Long id, Principal principal) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid user id: " + id));
+
+        if (user.getEmail().equals(principal.getName()) || user.getRole().name().equals("ADMIN")) {
+            return "redirect:/admin/accounts";
+        }
+
+        List<Offer> userOffers = offerRepository.findByOwner(user);
+        lessonRequestRepository.deleteByRequester(user);
+        for (Offer offer : userOffers) {
+            lessonRequestRepository.deleteByOffer(offer);
+        }
+        offerRepository.deleteAll(userOffers);
+        userRepository.delete(user);
+
+        return "redirect:/admin/accounts";
+    }
+
     @GetMapping("/admin/offers")
     public String adminOffers(Model model) {
-        List<Offer> offers = offerRepository.findAll();
-        model.addAttribute("offers", offers);
+        model.addAttribute("offers", offerRepository.findAll());
         return "admin-offers";
     }
 
@@ -66,19 +127,17 @@ public class AdminController {
     public String adminOfferDetails(@PathVariable Long id, Model model) {
         Offer offer = offerRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid offer id: " + id));
-
         model.addAttribute("offer", offer);
         return "admin-offer-details";
     }
 
-    @GetMapping("/admin/offers/delete/{id}")
+    @PostMapping("/admin/offers/delete/{id}")
+    @Transactional
     public String deleteOffer(@PathVariable Long id) {
         Offer offer = offerRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid offer id: " + id));
-
         lessonRequestRepository.deleteByOffer(offer);
         offerRepository.delete(offer);
-
         return "redirect:/admin/offers";
     }
 }

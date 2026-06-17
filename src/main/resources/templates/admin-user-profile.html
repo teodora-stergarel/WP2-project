@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${profileUser.name} + ' - Admin View'">User Profile</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .topbar {
+            background: linear-gradient(90deg, #6a00b9, #7a00c9);
+            color: white;
+            padding: 18px 28px;
+            border-radius: 0 0 18px 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .topbar-title {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .topbar-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .admin-badge {
+            background-color: #d8b4fe;
+            color: #5b21b6;
+            border-radius: 20px;
+            padding: 10px 18px;
+            font-weight: 600;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .cover-area {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #7c3aed, #c026d3);
+        }
+
+        .cover-area img.cover-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-pic-wrapper {
+            position: absolute;
+            bottom: -55px;
+            left: 40px;
+            z-index: 10;
+        }
+
+        .profile-pic-wrapper img,
+        .profile-pic-placeholder {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 5px solid #F3EFDE;
+            object-fit: cover;
+            background-color: #563A9C;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: white;
+            font-family: Georgia, serif;
+        }
+
+        .profile-info {
+            padding: 70px 40px 20px 200px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .user-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #563A9C;
+            margin-bottom: 4px;
+        }
+
+        .user-email {
+            font-size: 1rem;
+            color: #563A9C;
+            margin-bottom: 8px;
+        }
+
+        .user-bio {
+            font-size: 1rem;
+            color: #563A9C;
+            font-style: italic;
+        }
+
+        .badge-penalty {
+            background-color: #ffcc00;
+            color: #5b00b5;
+            border-radius: 12px;
+            padding: 4px 14px;
+            font-weight: 700;
+        }
+
+        .badge-banned {
+            background-color: #ff4444;
+            color: white;
+            border-radius: 12px;
+            padding: 4px 14px;
+            font-weight: 700;
+        }
+
+        .badge-ok {
+            background-color: #c9beff;
+            color: #5b00b5;
+            border-radius: 12px;
+            padding: 4px 14px;
+            font-weight: 700;
+        }
+
+        .action-btn {
+            border: none;
+            border-radius: 12px;
+            padding: 10px 20px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            font-family: Georgia, serif;
+        }
+
+        .btn-penalty { background-color: #ffcc00; color: #5b00b5; }
+        .btn-unban { background-color: #c9beff; color: #5b00b5; }
+        .btn-delete { background-color: #ff4444; color: white; }
+
+        .admin-actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .user-stats {
+            display: flex;
+            gap: 16px;
+            margin-top: 8px;
+            align-items: center;
+        }
+
+        .offers-section {
+            padding: 32px 40px;
+        }
+
+        .offers-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #563A9C;
+            margin-bottom: 24px;
+        }
+
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .offer-card {
+            border: 4px solid #563A9C;
+            border-radius: 18px;
+            padding: 16px;
+            background-color: #F3EFDE;
+            min-height: 180px;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.15s ease;
+        }
+
+        .offer-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .category-pill {
+            background-color: #C9BEFF;
+            color: #563A9C;
+            border-radius: 18px;
+            padding: 4px 22px;
+            display: inline-block;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .offer-description {
+            font-size: 0.85rem;
+            color: #563A9C;
+            margin-top: 8px;
+        }
+
+        .author-pill {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            background-color: #563A9C;
+            color: white;
+            border-radius: 16px;
+            padding: 5px 12px;
+            font-size: 13px;
+        }
+
+        .no-offers {
+            color: #563A9C;
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="topbar">
+    <h1 class="topbar-title" th:text="${profileUser.name} + '\'s Profile'">User Profile</h1>
+    <div class="topbar-right">
+        <a th:href="@{/admin/accounts}" class="admin-badge">← Accounts</a>
+        <div class="menu-container">
+            <button class="hamburger-btn" type="button" onclick="toggleMenu()">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            <div class="dropdown-menu-custom" id="dropdownMenu">
+                <a th:href="@{/}">Home</a>
+             
+                <a th:href="@{/profile}">My profile</a>
+                <a th:href="@{/admin}">Admin Dashboard</a>
+                <a th:href="@{/admin/accounts}">Manage accounts</a>
+                <a th:href="@{/admin/offers}">Manage offers</a>
+                <form th:action="@{/logout}" method="post" style="margin:0;">
+                    <button type="submit" class="logout-btn">Logout</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- COVER + POZA -->
+<div style="position: relative;">
+    <div class="cover-area">
+        <img th:if="${profileUser.coverImagePath != null}"
+             th:src="${profileUser.coverImagePath}"
+             class="cover-img" alt="Cover">
+    </div>
+    <div class="profile-pic-wrapper">
+        <img th:if="${profileUser.profileImagePath != null}"
+             th:src="${profileUser.profileImagePath}" alt="Profile">
+        <div th:unless="${profileUser.profileImagePath != null}"
+             class="profile-pic-placeholder">U</div>
+    </div>
+</div>
+
+<!-- INFO + ACTIUNI ADMIN -->
+<div class="profile-info">
+    <div class="profile-info-left">
+        <div class="user-name" th:text="${profileUser.name}">Name</div>
+        <div class="user-email" th:text="${profileUser.email}">Email</div>
+        <div th:if="${profileUser.bio != null and !#strings.isEmpty(profileUser.bio)}"
+             class="user-bio" th:text="${profileUser.bio}">Bio</div>
+        <div class="user-stats">
+            <span><strong>Credits:</strong> <span th:text="${profileUser.creditsBalance}">0</span></span>
+            <span class="badge-penalty" th:text="${profileUser.penalties} + '/3 penalties'">0/3</span>
+            <span th:if="${profileUser.banned}" class="badge-banned">BANNED</span>
+            <span th:unless="${profileUser.banned}" class="badge-ok">Active</span>
+        </div>
+    </div>
+
+    <!-- BUTOANE ADMIN -->
+    <div class="admin-actions">
+        <form th:if="${!profileUser.banned}"
+              th:action="@{/admin/accounts/penalty/{id}(id=${profileUser.id})}"
+              method="post">
+            <button type="submit" class="action-btn btn-penalty">+ Penalty</button>
+        </form>
+
+        <form th:if="${profileUser.banned}"
+              th:action="@{/admin/accounts/unban/{id}(id=${profileUser.id})}"
+              method="post">
+            <button type="submit" class="action-btn btn-unban">Unban</button>
+        </form>
+
+        <form th:action="@{/admin/accounts/delete/{id}(id=${profileUser.id})}"
+              method="post"
+              onsubmit="return confirm('Delete this user permanently?');">
+            <button type="submit" class="action-btn btn-delete">Delete User</button>
+        </form>
+    </div>
+</div>
+
+<!-- OFERTE -->
+<div class="offers-section">
+    <div class="offers-title">User's offers:</div>
+
+    <div th:if="${#lists.isEmpty(userOffers)}" class="no-offers">
+        This user has no offers yet.
+    </div>
+
+    <div class="offers-grid" th:unless="${#lists.isEmpty(userOffers)}">
+        <div th:each="offer : ${userOffers}" style="position: relative;">
+            <a th:href="@{/admin/offers/{id}(id=${offer.id})}"
+               style="text-decoration: none; color: inherit; display: block;">
+                <div class="offer-card">
+                    <div class="category-pill" th:text="${offer.title}">Title</div>
+                    <p class="offer-description"
+                       th:text="${#strings.abbreviate(offer.description, 120)}">Description</p>
+                </div>
+            </a>
+            <span class="author-pill" th:text="'@' + ${profileUser.name}">@User</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleMenu() {
+        document.getElementById("dropdownMenu").classList.toggle("show");
+    }
+
+    window.onclick = function(event) {
+        if (!event.target.closest(".menu-container")) {
+            const dropdown = document.getElementById("dropdownMenu");
+            if (dropdown && dropdown.classList.contains("show")) {
+                dropdown.classList.remove("show");
+            }
+        }
+    }
+</script>
+
+</body>
+</html>

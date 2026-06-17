@@ -1,3 +1,14 @@
+error id: file://<WORKSPACE>/src/main/java/com/wp/skillswap/controller/OfferController.java:_empty_/OfferRepository#save#
+file://<WORKSPACE>/src/main/java/com/wp/skillswap/controller/OfferController.java
+empty definition using pc, found symbol in pc: _empty_/OfferRepository#save#
+found definition using semanticdb; symbol com/wp/skillswap/controller/OfferController#offerRepository.
+empty definition using fallback
+non-local guesses:
+
+offset: 4943
+uri: file://<WORKSPACE>/src/main/java/com/wp/skillswap/controller/OfferController.java
+text:
+```scala
 package com.wp.skillswap.controller;
 
 import com.wp.skillswap.model.LessonRequest;
@@ -113,7 +124,7 @@ public String showOfferDetails(@PathVariable Long id, Model model, Principal pri
         offer.setCreatedAt(LocalDateTime.now());
 
         if (attachment != null && !attachment.isEmpty()) {
-            String uploadDir = "uploads/";
+            String uploadDir = "src/main/resources/static/uploads/";
 
             Files.createDirectories(Paths.get(uploadDir));
 
@@ -133,7 +144,7 @@ public String showOfferDetails(@PathVariable Long id, Model model, Principal pri
             offer.setAttachmentPath("/uploads/" + fileName);
         }
 
-        offerRepository.save(offer);
+        offerRepository.sa@@ve(offer);
 
         return "redirect:/offers";
     }
@@ -241,3 +252,9 @@ public String requestLessonPage(@PathVariable Long id, Model model) {
     return "request-lesson";
 }
 }
+```
+
+
+#### Short summary: 
+
+empty definition using pc, found symbol in pc: _empty_/OfferRepository#save#

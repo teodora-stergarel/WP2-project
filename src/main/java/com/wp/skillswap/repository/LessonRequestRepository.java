@@ -11,6 +11,8 @@ public interface LessonRequestRepository extends JpaRepository<LessonRequest, Lo
 
     void deleteByOffer(Offer offer);
 
+    void deleteByRequester(User requester);
+
     List<LessonRequest> findByRequester(User requester);
 
     List<LessonRequest> findByOfferOwner(User owner);

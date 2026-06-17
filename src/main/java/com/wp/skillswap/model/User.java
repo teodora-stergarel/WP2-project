@@ -34,4 +34,11 @@ public class User {
 
     @Column(nullable = false)
     private Integer creditsBalance;
+
+    @Column(nullable = false)
+    private Integer penalties = 0;
+
+    @Column(nullable = false)
+    private boolean banned = false;
+private String coverImagePath;
 }

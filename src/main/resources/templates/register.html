@@ -1,35 +1,198 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
 <head>
+    <meta charset="UTF-8">
     <title>Register - SkillSwap</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
 
-<h1>Create Account</h1>
+<nav class="navbar-custom">
 
-<form th:action="@{/register}" th:object="${registerRequest}" method="post">
-    <div>
-        <label>Name:</label>
-        <input type="text" th:field="*{name}">
-        <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+    <a th:href="@{/}" class="logo">SkillSwap</a>
+
+    <div class="nav-links">
+
+        <a th:href="@{/offers}" class="nav-link-custom">
+            Browse offers
+        </a>
+
+        <div class="menu-container">
+
+            <button class="hamburger-btn"
+                    type="button"
+                    onclick="toggleMenu()">
+
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+
+            </button>
+
+            <div class="dropdown-menu-custom" id="dropdownMenu">
+
+                <a th:href="@{/}">Home</a>
+                <a th:href="@{/offers}">Browse offers</a>
+                <a th:href="@{/login}">Log in</a>
+
+            </div>
+
+        </div>
+
     </div>
 
-    <div>
-        <label>Email:</label>
-        <input type="email" th:field="*{email}">
-        <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
-    </div>
+</nav>
 
-    <div>
-        <label>Password:</label>
-        <input type="password" th:field="*{password}">
-        <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
-    </div>
+<main class="page-container"
+      style="
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      min-height: calc(100vh - 86px);
+      ">
 
-    <button type="submit">Register</button>
-</form>
+    <section class="purple-card"
+             style="
+             width:760px;
+             padding:50px;
+             ">
 
-<p><a th:href="@{/login}">Already have an account? Log in</a></p>
+        <h1 style="
+            text-align:center;
+            font-size:70px;
+            margin-top:0;
+            margin-bottom:45px;
+        ">
+            Create your account
+        </h1>
+
+        <form th:action="@{/register}" method="post">
+
+            <div style="
+                display:grid;
+                grid-template-columns:1fr 1fr;
+                gap:30px;
+                margin-bottom:30px;
+            ">
+
+                <div>
+                    <label style="
+                        display:block;
+                        font-size:28px;
+                        font-weight:bold;
+                        margin-bottom:10px;
+                    ">
+                        Name
+                    </label>
+
+                    <input type="text"
+                           name="name"
+                           class="gray-input"
+                           required>
+                </div>
+
+                <div>
+                    <label style="
+                        display:block;
+                        font-size:28px;
+                        font-weight:bold;
+                        margin-bottom:10px;
+                    ">
+                        Surname
+                    </label>
+
+                    <input type="text"
+                           name="surname"
+                           class="gray-input">
+                </div>
+
+            </div>
+
+            <div style="margin-bottom:30px;">
+
+                <label style="
+                    display:block;
+                    font-size:28px;
+                    font-weight:bold;
+                    margin-bottom:10px;
+                ">
+                    Email
+                </label>
+
+                <input type="email"
+                       name="email"
+                       class="gray-input"
+                       required>
+
+            </div>
+
+            <div style="margin-bottom:30px;">
+
+                <label style="
+                    display:block;
+                    font-size:28px;
+                    font-weight:bold;
+                    margin-bottom:10px;
+                ">
+                    Password
+                </label>
+
+                <input type="password"
+                       name="password"
+                       class="gray-input"
+                       required>
+
+            </div>
+
+            <button type="submit"
+                    class="purple-btn"
+                    style="
+                    width:100%;
+                    padding:18px;
+                    font-size:28px;
+                    ">
+                Create account
+            </button>
+
+        </form>
+
+        <p style="
+            text-align:center;
+            margin-top:25px;
+            font-size:20px;
+        ">
+            Already have an account?
+
+            <a th:href="@{/login}"
+               style="
+               color:#563A9C;
+               font-weight:bold;
+               ">
+                Log in
+            </a>
+        </p>
+
+    </section>
+
+</main>
+
+<script>
+    function toggleMenu() {
+        document.getElementById("dropdownMenu").classList.toggle("show");
+    }
+
+    window.onclick = function(event) {
+        if (!event.target.closest(".menu-container")) {
+            const dropdown = document.getElementById("dropdownMenu");
+            if (dropdown && dropdown.classList.contains("show")) {
+                dropdown.classList.remove("show");
+            }
+        }
+    }
+</script>
 
 </body>
 </html>

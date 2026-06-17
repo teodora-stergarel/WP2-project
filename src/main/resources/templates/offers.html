@@ -1,100 +1,231 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
-    <title>All Offers</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Browse Offers - SkillSwap</title>
+    <link rel="stylesheet" href="/css/style.css">
+
+    <style>
+        .offers-page { padding: 84px 36px 40px; }
+
+        .filters-row {
+            display: grid;
+            grid-template-columns: 2.3fr 0.9fr 0.9fr 0.9fr;
+            gap: 12px;
+            margin-bottom: 76px;
+            align-items: center;
+        }
+
+        .search-box, .filter-box {
+            height: 61px;
+            background: #A8A8A8;
+            border-radius: 18px;
+            border: none;
+            color: #F3EFDE;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 25px;
+            font-weight: bold;
+            padding: 0 20px;
+        }
+
+        .search-box::placeholder { color: #F3EFDE; opacity: 1; }
+
+        .new-offer-btn, .filter-submit-btn {
+            height: 61px;
+            background: #563A9C;
+            color: #F3EFDE;
+            border-radius: 18px;
+            text-decoration: none;
+            font-size: 25px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+
+        .offers-grid-figma {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 36px 38px;
+        }
+
+        .offer-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .offer-card-figma {
+            height: 186px;
+            border: 5px solid #563A9C;
+            border-radius: 18px;
+            background: #F3EFDE;
+            position: relative;
+            padding: 8px 14px 14px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .offer-subject {
+            background: #C9BEFF;
+            color: #563A9C;
+            border-radius: 18px;
+            min-width: 145px;
+            max-width: 190px;
+            height: 30px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 0 18px;
+        }
+
+        .offer-description {
+            margin: 27px 0 0;
+            color: #000;
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            line-height: 1.15;
+            max-height: 58px;
+            overflow: hidden;
+        }
+
+        .offer-author {
+            position: absolute;
+            right: 12px;
+            bottom: 12px;
+            background: #563A9C;
+            color: #F3EFDE;
+            border-radius: 16px;
+            padding: 5px 12px;
+            font-size: 13px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .offer-author:hover {
+            background: #432d7a;
+        }
+
+        .empty-message {
+            color: #563A9C;
+            font-size: 28px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 80px;
+        }
+    </style>
 </head>
-<body class="bg-light">
 
-<div class="container mt-5 mb-5">
+<body>
 
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2>Available Tutoring Offers</h2>
-        <div>
-            <a href="/lesson-requests" class="btn btn-outline-dark me-2">Lesson Requests</a>
-            <a href="/offers/create" class="btn btn-primary">Create New Offer</a>
-        </div>
-    </div>
+<nav class="navbar-custom">
+    <a th:href="@{/}" class="logo">SkillSwap</a>
 
-    <div th:if="${param.success == 'deleted'}" class="alert alert-success">
-        Offer deleted successfully.
-    </div>
+    <div class="nav-links">
+        <a th:href="@{/profile}" class="nav-link-custom">Your offers</a>
 
-    <div th:if="${param.error == 'notenoughcredits'}" class="alert alert-danger">
-        Not enough credits.
-    </div>
+        <div class="menu-container">
+            <button class="hamburger-btn" type="button" onclick="toggleMenu()">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
 
-    <div th:if="${param.error == 'ownoffer'}" class="alert alert-danger">
-        You cannot request your own lesson.
-    </div>
-
-    <div th:if="${param.error == 'forbidden'}" class="alert alert-danger">
-        You are not allowed to delete this offer.
-    </div>
-
-    <div th:if="${param.error == 'notfound'}" class="alert alert-danger">
-        Offer not found.
-    </div>
-
-    <div th:if="${#lists.isEmpty(offers)}" class="alert alert-info">
-        No offers available yet.
-    </div>
-
-    <div class="row" th:if="${!#lists.isEmpty(offers)}">
-
-        <div class="col-md-6 mb-4" th:each="offer : ${offers}">
-            <div class="card h-100 shadow-sm border-0 rounded-4">
-
-                <div class="card-body">
-
-                    <h5 class="card-title" th:text="${offer.title}"></h5>
-
-                    <p class="card-text"
-                       th:text="${#strings.abbreviate(offer.description, 120)}">
-                    </p>
-
-                    <p class="mb-2">
-                        <strong>Price:</strong>
-                        <span class="badge bg-success"
-                              th:text="${offer.priceCredits} + ' credits'"></span>
-                    </p>
-
-                    <p class="mb-2">
-                        <strong>Created by:</strong>
-                        <span th:text="${offer.owner.name}"></span>
-                    </p>
-
-                    <p class="text-muted small mb-3">
-                        <strong>Created at:</strong>
-                        <span th:text="${#temporals.format(offer.createdAt, 'dd MMM yyyy, HH:mm')}"></span>
-                    </p>
-
-                    <form th:action="@{/offers/delete/{id}(id=${offer.id})}"
-                          method="post"
-                          onsubmit="return confirm('Are you sure you want to delete this offer?');">
-                        <button type="submit" class="btn btn-sm btn-danger w-100">
-                            Delete Offer
-                        </button>
-                    </form>
-
-                    <form th:action="@{/offers/request/{id}(id=${offer.id})}"
-                          method="post"
-                          class="mt-2"
-                          onsubmit="return confirm('Do you want to request this lesson?');">
-                        <button type="submit" class="btn btn-sm btn-success w-100">
-                            Request Lesson
-                        </button>
-                    </form>
-
-                </div>
-
+            <div class="dropdown-menu-custom" id="dropdownMenu">
+                <a th:href="@{/}">Home</a>
+                <a th:href="@{/offers}">Browse offers</a>
+                <a th:href="@{/offers/create}">Add offer</a>
+                <a th:href="@{/profile}">My profile</a>
+                <a th:href="@{/lesson-requests}">Lesson requests</a>
+                <form th:action="@{/logout}" method="post" style="margin:0;">
+                    <button type="submit" class="logout-btn">Logout</button>
+                </form>
             </div>
         </div>
+    </div>
+</nav>
 
+<main class="offers-page">
+
+    <form th:action="@{/offers}" method="get" class="filters-row">
+        <input class="search-box"
+               type="text"
+               name="search"
+               placeholder="Search offers ..."
+               th:value="${search}">
+
+        <select class="filter-box" name="subject">
+            <option value="any">Subject: any</option>
+            <option value="programming" th:selected="${subject == 'programming'}">Programming</option>
+            <option value="math" th:selected="${subject == 'math'}">Math</option>
+            <option value="music" th:selected="${subject == 'music'}">Music</option>
+            <option value="photoshop" th:selected="${subject == 'photoshop'}">Photoshop</option>
+            <option value="wp" th:selected="${subject == 'wp'}">WP</option>
+        </select>
+
+        <select class="filter-box" name="credits">
+            <option value="">Credits: any</option>
+            <option value="1" th:selected="${credits == 1}">1 credit</option>
+            <option value="2" th:selected="${credits == 2}">2 credits</option>
+            <option value="3" th:selected="${credits == 3}">3 credits</option>
+            <option value="4" th:selected="${credits == 4}">4 credits</option>
+            <option value="5" th:selected="${credits == 5}">5 credits</option>
+        </select>
+
+        <button class="filter-submit-btn" type="submit">Search</button>
+    </form>
+
+    <div style="margin-bottom: 40px;">
+        <a th:href="@{/offers/create}" class="new-offer-btn"
+           style="display:inline-flex; align-items:center; justify-content:center; padding: 0 40px;">
+            + New offer
+        </a>
     </div>
 
-</div>
+    <div th:if="${#lists.isEmpty(offers)}" class="empty-message">
+        No offers found.
+    </div>
+
+    <section class="offers-grid-figma" th:if="${!#lists.isEmpty(offers)}">
+
+        <div th:each="offer : ${offers}" style="position: relative;">
+            <a class="offer-link" th:href="@{/offers/{id}(id=${offer.id})}">
+                <div class="offer-card-figma">
+                    <div class="offer-subject" th:text="${offer.title}">Programming</div>
+
+                    <p class="offer-description" th:text="${offer.description}">
+                        Offer description
+                    </p>
+                </div>
+            </a>
+
+            <a th:href="@{/profile/{id}(id=${offer.owner.id})}"
+               class="offer-author"
+               th:text="'@' + ${offer.owner.name}">
+                @User
+            </a>
+        </div>
+
+    </section>
+
+</main>
+
+<script>
+    function toggleMenu() {
+        document.getElementById("dropdownMenu").classList.toggle("show");
+    }
+
+    window.onclick = function(event) {
+        if (!event.target.closest(".menu-container")) {
+            const dropdown = document.getElementById("dropdownMenu");
+            if (dropdown && dropdown.classList.contains("show")) {
+                dropdown.classList.remove("show");
+            }
+        }
+    }
+</script>
 
 </body>
 </html>
